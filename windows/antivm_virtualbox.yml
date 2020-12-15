@@ -1,0 +1,40 @@
+name: antivm_virtualbox
+signatures:
+  registry_antivm_virtualbox:
+    short_description: Detects VirtualBox through registry keys
+    description: Enumerates registry keys generally present in VirtualBox VMs. Common anti-VM/anti-analysis technique.
+    score: 7
+    ttps:
+      - T1497.001
+      - T1012
+    triggers:
+      - registry read:
+        - ^HKLM\\SOFTWARE\\Oracle\\VirtualBox Guest Additions
+      - registry read:
+        - ^HKLM\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Uninstall\\Oracle VM VirtualBox Guest Additions
+      - registry read:
+        - ^HKLM\\ControlSet001\\Services\\VBox*
+      - registry read:
+        - ^HKLM\\SYSTEM\\ControlSet001\\Enum\\PCI\\VEN_80EE&DEV_(BEEF|CAFE)&SUBSYS_00000000&REV_00
+      - registry read:
+        - ^HKLM\\SYSTEM\\ControlSet001\\Control\\VirtualDeviceDrivers
+      - registry read:
+        - ^HKLM\\HARDWARE\\ACPI\\(DSDT|FADT|RSDT)\\VBOX__.*
+
+  files_antivm_virtualbox:
+    short_description: Detects VirtualBox through the presence of files
+    description: Checks for the presence of files on the system which are generally present in VirtualBox VMs. Common anti-VM/anti-analysis technique.
+    score: 7
+    ttps:
+      - T1497.001
+    triggers:
+    - file read: # DLLs
+      - ^C:\\Windows\\System32\\(VBoxDisp|VBoxHook|VBoxMRXNP|VBoxOGL|VBoxOGLarrayspu|VBoxOGLcrutil|VBoxOGLerrorspu|VBoxOGLfeedbackspu|VBoxOGLpackspu|VBoxOGLpassthroughspu)\.dll$
+    - file read: # Drivers
+      - ^C:\\Windows\\System32\\Drivers\\(VBoxSF|vboxmouse|vboxguest|vboxvideo)\.sys$
+    - file read: # Binaries
+      - ^C:\\Windows\\System32\\(VBoxControl|VBoxService|VBoxTray|VBoxDrvInst|VBoxWHQLFake)\.exe$
+    - file read: # Uninstallers
+      - ^C:\program files( \(x86\))?\\Oracle\\VirtualBox Guest Additions\\uninst\.exe(\.dll)?$
+    - file read: # Devices
+      - .*VBox(Guest|Mouse|Video|MiniRdrDN|MiniRdDN|TrayIPC)$

@@ -1,0 +1,36 @@
+name: registry_persistence
+signatures:
+    registry_write_javascript:
+        short_description: Wrote Javascript to registry key
+        description: Detected Javascript code in string(s) written to the registry. Likely persistence mechanism.
+        score: 8
+        ttps:
+            - T1059.007
+            - T1547.001
+            - T1112
+        triggers:
+        - registry value:
+            - ^javascript:.+$
+    registry_write_executable:
+        # Cuckoo 2 sig which detects MZ header
+        short_description: Wrote executable to registry key
+        description: Detected a Windows PE file in data written to the registry. Likely persistence mechanism.
+        score: 9
+        ttps:
+            - T1112
+            - T1547.001
+        triggers:
+        - registry value:
+            - ^MZ
+    registry_write_powershell:
+        # Looks for call to Powershell interpreter in registry strings
+        short_description: Wrote PowerShell to registry key
+        description: Detected PowerShell code in string(s) written to the registry. Likely persistence mechanism.
+        score: 8
+        ttps:
+            - T1112
+            - T1547.001
+            - T1059.001
+        triggers:
+        - registry value:
+            - \bpowershell(\.exe)?\b

@@ -1,14 +1,14 @@
 name: antivm_hyperv
 signatures:
-  short_description: Detects HyperV through registry keys
-  description: Enumerates registry keys generally present in VirtualBox VMs. Common anti-VM/anti-analysis technique.
-  score: 7
-  ttps:
-    - T1497.001
-    - T1012
-  triggers:
-    - registry read:
-      - ^HKLM\\SYSTEM\\ControlSet001\\Enum\\ACPI\\Hyper_V_Gen_Counter_V1$
-    - registry read: # This one's from al-khaser (https://github.com/LordNoteworthy/al-khaser/blob/master/README.md)
-      - ^HKLM\\SOFTWARE\\Microsoft\\Virtual Machine\\Guest\\Parameters$
-  
+  registry_antivm_hyperv:
+    short_description: Detects HyperV through registry keys
+    description: Enumerates registry keys generally present in VirtualBox VMs. Common anti-VM/anti-analysis technique.
+    score: 7
+    ttps:
+      - T1497.001
+      - T1012
+    triggers:
+      - registry read:
+        - ^(HKLM|HKCU)\\SYSTEM\\ControlSet001\\Enum\\ACPI\\Hyper_V_Gen_Counter_V1$
+      - registry read: # This one's from al-khaser (https://github.com/LordNoteworthy/al-khaser/blob/master/README.md)
+        - ^(HKLM|HKCU)\\SOFTWARE\\Microsoft\\Virtual Machine\\Guest\\Parameters$

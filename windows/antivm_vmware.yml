@@ -1,0 +1,32 @@
+name: antivm_vmware
+signatures:
+  registry_antivm_vmware:
+    short_description: Detects VMWare through registry keys
+    description: Enumerates registry keys generally present in VMWare VMs. Common anti-VM/anti-analysis technique.
+    score: 7
+    ttps:
+      - T1497.001
+      - T1012
+    triggers:
+      - registry read:
+        - ^(HKLM|HKCU)\\SOFTWARE\\VMWare, Inc\.\\.*$
+      - registry read:
+        - ^(HKLM|HKCU)\\SOFTWARE\\Clients\\StartMenuInternet\\VMWAREHOSTOPEN\.EXE$
+      - registry read:
+        - ^(HKLM|HKCU)\\SOFTWARE\\Microsoft\\ESENT\\Process\\vmtoolsd$
+      - registry read:
+        - ^(HKLM|HKCU)\\SYSTEM\\ControlSet001\\Control\\CriticalDeviceDatabase\\rootz\#vmwvmcihostdev$
+
+  files_antivm_vmware:
+    short_description: Detects VMWare through the presence of files
+    description: Checks for files on the system which are generally present in VMWare VMs. Common anti-VM/anti-analysis technique.
+    score: 7
+    ttps:
+      - T1497.001
+    triggers:
+    - file read:
+      - ^c:\\windows\\system32\\drivers\\(vmmouse|vmhgfs|vm3dump|vmci|vmmemctl|vmrawdisk|vmusbmouse)\.sys$
+    - file read:
+      - \\(hgfs|vmci)$
+
+

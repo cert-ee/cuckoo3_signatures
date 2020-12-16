@@ -1,0 +1,12 @@
+name: antivm_parallels
+signatures:
+  registry_antivm_parallels:
+    short_description: Detects Parallels through registry keys
+    description: Enumerate registry keys generally present in Parallels VMs. Likely anti-VM/anti-analysis technique.
+    score: 7
+    ttps:
+      - T1497.001
+      - T1012
+    triggers:
+      - registry read: # Copied directly from existing Cuckoo sigs
+        - ^(HKLM|HKCU)\\SYSTEM\\ControlSet001\\Enum\\PCI\\VEN_1AB8&DEV_(4000|4005|4006)&SUBSYS_(04001AB8|04061AB8)&REV_00$

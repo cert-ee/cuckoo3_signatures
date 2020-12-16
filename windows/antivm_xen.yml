@@ -1,0 +1,16 @@
+name: antivm_xen
+signatures:
+  registry_antivm_xen:
+    short_description: Detects Xen through registry keys
+    description: Enumerates registry keys generally present in Xen VMs. Common anti-VM/anti-analysis technique.
+    score: 7
+    ttps:
+    - T1497.001
+    - T1012
+    triggers:
+    - registry read:
+      - ^(HKLM|HKCU)\\SYSTEM\\ControlSet001\\Enum\\ACPI\\XEN0000.*$
+    - registry read:
+      - ^(HKLM|HKCU)\\SYSTEM\\ControlSet001\\Enum\\XEN.*$
+    - registry read:
+      - ^(HKLM|HKCU)\\HARDWARE\\ACPI\\(DSDT|FADT|RSDT)\\Xen.*$

@@ -1,0 +1,13 @@
+name: antivm_virtualpc
+signatures:
+  registry_antivm_virtualpc:
+    short_description: Detects VirtualPC through registry keys
+    description: Enumerates registry keys generally present in VirtualPC VMs. Common anti-VM/anti-analysis technique.
+    score: 7
+    ttps:
+    - T1497.001
+    - T1012
+    triggers:
+    - registry read:
+      - ^(HKLM|HKCU)\\SYSTEM\\ControlSet001\\Enum\\PCI\\VEN_5333&DEV_8811&SUBSYS_00000000&REV_00$
+      - ^(HKLM|HKCU)\\SYSTEM\\ControlSet001\\Services\\vpc-s3$

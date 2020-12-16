@@ -1,0 +1,12 @@
+name: antivm_bochs
+signatures:
+  registry_antivm_bochs:
+    short_description: Detects Bochs through registry keys
+    description: Enumerates registry keys generally present in Bochs VMs. Common anti-VM/anti-analysis technique.
+    score: 7
+    ttps:
+    - T1497.001
+    - T1012
+    triggers:
+    - registry read:
+      - ^(HKLM|HKCU)\\HARDWARE\\ACPI\\(DSDT|FADT|RSDT)\\BOCHS_.*$

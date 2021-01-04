@@ -1,0 +1,28 @@
+name: antiav_general
+signatures:
+  registry_antiav_general:
+    short_description: Attempts to identify installed anti-virus software via registry keys
+    description: Enumerates the registry and checks for the presence of keys or values known to be related to various anti-virus solutions. Identifying the installed security software is generally related to evasion techniques.
+    score: 7
+    ttps:
+    - T1012
+    - T1518.001
+    triggers:
+    - registry read: #Avast
+      - ^(HKLM|HKCU)\\Software\\AVAST Software\\Avast($|\\)
+    - registry read:
+      - ^(HKLM|HKCU)\\SYSTEM\\ControlSet001\\Services\\avast\! Antivirus($|\\)
+    - registry read: # BitDefender
+      - ^(HKLM|HKCU|\\Software\\Bitdefender\\QuickScan($|\\)
+
+  files_antiav_general:
+    short_description: Attempts to identify installed anti-virus software via file checks
+    description: Enumeates the file system and looks for the presence of files and libraries known to be part of various anti-virus solutions. Identifying the installed security software is generally related to evasion techniques.
+    score: 7
+    ttps:
+    - T1518.001
+    triggers:
+    - file read: # Avast
+      - \\snxhk\.dll$
+    - file read: # BitDefender
+      - \\avcuf32\.dll$

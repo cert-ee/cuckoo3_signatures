@@ -1,0 +1,24 @@
+name: antiav_avast
+signatures:
+  registry_antiav_avast:
+    short_description: Attempts to identify Avast Anti-Virus through registry keys
+    description: Enumerates registry keys related to Avast antivirus software.
+    score: 7
+    ttps:
+    - T1012
+    - T1518.001
+    triggers:
+    - registry read:
+      - ^(HKLM|HKCU)\\Software\\AVAST Software\\Avast($|\\)
+    - registry read:
+      - ^(HKLM|HKCU)\\SYSTEM\\ControlSet001\\Services\\avast\! Antivirus($|\\)
+
+  files_antiav_avast:
+    short_description: Checks for libraries related to Avast Anti-Virus
+    description: Tries to load DLL(s) which are part of Avast antivirus software. Likely checking security software on the system for evasion.
+    score: 7
+    ttps:
+    - T1518.001
+    triggers:
+    - file read:
+      - \\snxhk\.dll$

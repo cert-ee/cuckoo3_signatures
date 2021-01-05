@@ -1,0 +1,28 @@
+name: antianalysis_debuggers
+signatures:
+  antianalysis_debugger_devices:
+    short_description: Checks for the presence of known devices from debuggers and forensic tools
+    score: 8
+    ttps:
+    - T1497.001
+    triggers:
+    - file read:
+      - \\SICE$
+    - file read:
+      - \\SIWVID$
+    - file read:
+      - \\SIWDEBUG$
+    - file read:
+      - \\NTICE$
+    - file read:
+      - \\REGVXG$
+    - file read:
+      - \\FILEVXG$
+    - file read:
+      - \\REGSYS$
+    - file read:
+      - \\FILEM$
+    - file read:
+      - \\TRW$
+    - file read:
+      - \\ICEXT

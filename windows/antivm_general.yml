@@ -1,0 +1,13 @@
+name: antim_general
+signatures:
+  registry_antivm_cpu_check:
+    short_description: Checks the CPU name in the registry
+    description: Looks up registry value(s) which can often be used to detect a virtual environment.
+    score: 7
+    ttps:
+    - T1012
+    - T1082
+    - T1497.001
+    triggers:
+    - registry read:
+      - ^(HKLM|HKCU)\\HARDWARE\\DESCRIPTION\\System\\CentralProcessor\\[^\\]+\\ProcessorNameString$

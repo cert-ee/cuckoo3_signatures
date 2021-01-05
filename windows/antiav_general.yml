@@ -11,9 +11,73 @@ signatures:
     - registry read: #Avast
       - ^(HKLM|HKCU)\\Software\\AVAST Software\\Avast($|\\)
     - registry read:
-      - ^(HKLM|HKCU)\\SYSTEM\\ControlSet001\\Services\\avast\! Antivirus($|\\)
+      - ^(HKLM|HKCU)\\SYSTEM\\ControlSet001\\Services\\avast! Antivirus($|\\)
     - registry read: # BitDefender
       - ^(HKLM|HKCU|\\Software\\Bitdefender\\QuickScan($|\\)
+    - registry read:
+      - ^(HKLM|HKCU)\\Software\\ESET\\NOD($|\\)
+    - registry read:
+      - ^(HKLM|HKCU)\\Software\\Doctor Web\\InstalledComponents($|\\)
+    - registry read:
+      - ^(HKLM|HKCU)\\Software\\AVG\\AV($|\\)
+    - registry read:
+      - ^(HKLM|HKCU)\\Software\\Microsoft\\Microsoft Antimalware Setup\\StartMenu Microsoft Security Essentials($|\\)
+    - registry read:
+      - ^(HKLM|HKCU)\\Software\\AhnLab\\V3IS80($|\\)
+    - registry read:
+      - ^(HKLM|HKCU)\\Software\\COMODO\\CIS($|\\)
+    - registry read:
+      - ^(HKLM|HKCU)\\Software\\F-Secure\\Computer Security\\DART($|\\)
+    - registry read:
+      - ^(HKLM|HKCU)\\Software\\ClamWin\\Version($|\\)
+    - registry read:
+      - ^(HKLM|HKCU)\\Software\\Avira($|\\)
+    - registry read:
+      - ^HKCU\\Software\\Avira\\Antivirus($|\\)
+    - registry read:
+      - ^HKCU\\Software\\G Data\\AntiVirenKit($|\\)
+    - registry read:
+      - ^HKCU\\Software\\Sophos($|\\)
+    - registry read:
+      - ^HKCU\\Software\\McAfee\\DesktopProtection($|\\)
+    - registry read:
+      - ^HKCU\\Software\\ArcaBit($|\\)
+    - registry read:
+      - ^HKCU\\Software\\KasperskyLab($|\\)
+    - registry read:
+      - ^HKCU\\Software\\Vba32\\Loader($|\\)
+    - registry read:
+      - ^HKCU\\Software\\TrendMicro\\UniClient($|\\)
+    - registry read:
+      - ^HKCU\\Software\\BullGuard Ltd\.\\BullGuard\\Main($|\\)
+    - registry read:
+      - ^HKCU\\Software\\FRISK Software\\F-PROT Antivirus for Windows($|\\)
+    - registry read:
+      - ^HKCU\\Software\\K7 Computing\\K7TotalSecurity($|\\)
+    - registry read:
+      - ^HKCU\\Software\\Fortinet\\FortiClient\\installed($|\\)
+    - registry read:
+      - ^HKCU\\Software\\IKARUS\\anti.virus($|\\)
+    - registry read:
+      - ^HKCU\\Software\\Jiangmin\\ComputerID($|\\)
+    - registry read:
+      - ^HKLM\\SYSTEM\\ControlSet001\\Services\\a2AntiMalware($|\\)
+    - registry read:
+      - ^HKLM\\SYSTEM\\ControlSet001\\Services\\QHActiveDefense($|\\)
+    - registry read:
+      - ^HKLM\\SYSTEM\\ControlSet001\\Services\\AVP18.0.0($|\\)
+    - registry read:
+      - ^HKLM\\SYSTEM\\ControlSet001\\Services\\McProxy($|\\)
+    - registry read:
+      - ^HKLM\\SYSTEM\\ControlSet001\\Services\\McAPExe($|\\)
+    - registry read:
+      - ^HKLM\\SYSTEM\\ControlSet001\\Services\\BavSvc($|\\)
+    - registry read:
+      - ^HKLM\\SYSTEM\\ControlSet001\\Services\\DrWebAVService($|\\)
+    - registry read:
+      - ^HKLM\\SYSTEM\\ControlSet001\\Services\\AntiVirService($|\\)
+    - registry read:
+      - ^HKLM\\SYSTEM\\ControlSet\\Services\\MBAMProtector($|\\)
 
   files_antiav_general:
     short_description: Attempts to identify installed anti-virus software via file checks
@@ -24,5 +88,85 @@ signatures:
     triggers:
     - file read: # Avast
       - \\snxhk\.dll$
+    - file read:
+      - \\AVAST Software(\\|$)
     - file read: # BitDefender
       - \\avcuf32\.dll$
+    - file read:
+      - \\BitDefender(\\|$)
+    - file read: # Avira
+      - \\Avira( GmbH)?(\\|$)
+    - file read: # Kaspersky
+      - \\Kaspersky Lab( Setup Files)?(\\|$)
+    - file read: # DrWeb
+      - \\Doctor Web(\\|$)
+    - file read:
+      - \\DrWeb(\\|$)
+    - file read: # Norton
+      - \\Norton (AntiVirus|Security with Backup|Internet Security)(\\|$)
+    - file read: # ESET
+      - \\ESET(\\|$)
+    - file read: # Agnitum
+      - \\Agnitum(\\|$)
+    - file read: # Panda Security
+      - \\Panda Security(\\|$)
+    - file read: # McAfee
+      - \\McAfee(\.com)?(\\|$)
+    - file read: # TrendMicro
+      - \\Trend Micro(\\|$)
+    - file read: # ArcaBit
+      - \\ArcaBit(\\|$)
+    - file read:
+      - \\Online Solutions(\\|$)
+    - file read:
+      - \\AnVir Task Manager(\\|$)
+    - file read:
+      - \\Alwil Software(\\|$)
+    - file read: # Symantec
+      - \\Symantec( Shared)?(\\|$)
+    - file read: # AVG
+      - \\AVG(\\|$)
+    - file read:
+      - \\Xore(\\|$)
+    - file read:
+      - \\avg8(\\|$)
+    - file read:
+      - \\a\-squared (HiJackFree|Anti\-Malware)(\\|$)
+    - file read: # F-Secure
+      - \\f-secure( Internet\\ Security)?(\\|$)
+    - file read:
+      - \\G DATA(\\|$)
+    - file read:
+      - \\P Tools( Internet Security)?(\\|$)
+    - file read:
+      - \\K7 Computing(\\|$)
+    - file read:
+      - \\Sunbelt Software(\\|$)
+    - file read:
+      - \\FRISK Software(\\|$)
+    - file read:
+      - \\Security Task Manager(\\|$)
+    - file read:
+      - \\Zillya Antivirus(\\|$)
+    - file read:
+      - \\Spyware Terminator(\\|$)
+    - file read:
+      - \\Lavasoft(\\|$)
+    - file read:
+      - \\BlockPost(\\|$)
+    - file read:
+      - \\DefenseWall( HIPS)?(\\|$)
+    - file read: # Microsoft Defender / MSE
+      - \\Microsoft\\ (Antimalware|Security Essentials|Security Client)(\\|$)
+    - file read:
+      - \\Sandboxie(\\|$)
+    - file read:
+      - \\Positive Technologies(\\|$)
+    - file read:
+      - \\UAenter(\\|$)
+    - file read: # MalwareBytes
+      - \\Malwarebytes( Anti-Malware)?(\\|$)
+    - file read:
+      - \\System32\\drivers\\kl1\.sys$
+    - file read:
+      - \\System32\\drivers\\(tm((actmon|comm)\.|e(vtmgr\.|ext\.)|(nciesc|tdi)\.)|TMEBC32\.)sys

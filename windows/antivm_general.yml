@@ -11,3 +11,18 @@ signatures:
     triggers:
     - registry read:
       - ^(HKLM|HKCU)\\HARDWARE\\DESCRIPTION\\System\\CentralProcessor\\[^\\]+\\ProcessorNameString$
+
+  files_antivm_cuckoo:
+    short_description: Attempts to detect Cuckoo Sandbox through the presence of a file
+    score: 9
+    ttps:
+    - T1497.001
+    triggers:
+    - file read:
+      - \\agent\.(py|pyw)$
+    - file read:
+      - \\analyzer\.py$
+    - file read:
+      - \\cuckoo\\dll
+    - file read:
+      - \\pipe\\cuckoo

@@ -1,0 +1,11 @@
+name: emulator_checks
+signatures:
+  registry_wine_emulator:
+    short_description: Detects Wine emulator based on registry keys
+    description: Checks for the presence of specific registry keys known to be related to the Wine emulator.
+    score: 8
+    ttps:
+    - T1497.001
+    triggers:
+    - file read:
+      - (HKCU|HKLM)\\Software\\Wine(\\|$)

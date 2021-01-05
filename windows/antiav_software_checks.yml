@@ -1,4 +1,4 @@
-name: antiav_general
+name: antiav_software_checks
 signatures:
   registry_antiav_general:
     short_description: Attempts to identify installed anti-virus software via registry keys

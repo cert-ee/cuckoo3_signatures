@@ -1,0 +1,12 @@
+name: antiav_general
+signatures:
+  antiav_srp:
+    short_description: Modifies Software Restriction Policies
+    description: SRP is a Windows feature which can restrict executables allowed to run. Malware modifies these settings to bypass restrictions or cripple anti-virus capabilities.
+    score: 9
+    ttps:
+    - T1012
+    - T1562.001
+    triggers:
+    - registry write:
+      - ^(HKLM|HKCU)\\Software\\Policies\\Microsoft\\Windows\\Safer\\\CodeIdentifiers\\0\\Paths\\.*$

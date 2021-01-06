@@ -1,0 +1,29 @@
+name: antianalysis_sandboxes
+signatures:
+  files_cuckoo_sandbox:
+    short_description: Attempts to detect Cuckoo Sandbox through the presence of a file
+    score: 9
+    ttps:
+    - T1497.001
+    triggers:
+    - file read:
+      - \\agent\.(py|pyw)$
+    - file read:
+      - \\analyzer\.py$
+    - file read:
+      - \\cuckoo\\dll
+    - file read:
+      - \\pipe\\cuckoo
+
+  files_fortinet_sandbox:
+    short_description: Attempts to detect Fortinet Sandbox through the presence of a file
+    score: 9
+    ttps:
+    - T1497.001
+    triggers:
+    - file read:
+      - ^C:\\tracer\\mdare32_0\.sys$
+    - file read:
+      - ^C:\\tracer\\fortitracer\.exe$
+    - file read:
+      - ^C:\\manual\\sunbox\.exe$

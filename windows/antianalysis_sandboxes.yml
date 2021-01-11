@@ -27,3 +27,31 @@ signatures:
       - ^C:\\tracer\\fortitracer\.exe$
     - file read:
       - ^C:\\manual\\sunbox\.exe$
+
+  files_sunbelt_sandbox:
+    short_description: Attempts to detect Sunbelt Sandbox through the presence of a file
+    score: 9
+    ttps:
+    - T1497.001
+    triggers:
+    - file read:
+      - \\api_log(\.dll)?$
+    - file read:
+      - \\dir_watch(\.dll)?$
+    - file read:
+      - \\SandboxStarter\.exe$
+    - file read:
+      - ^C:\\analysis\\.*$
+
+  files_threattrack_sandbox:
+    short_description: Attempts to detect ThreatTrack/GFI/CW Sandbox through the presence of a file
+    score: 9
+    ttps:
+    - T1497.001
+    triggers:
+    - file read:
+      - ^C:\\cwsandbox(\\|$)
+    - file read:
+      - ^C:\\gfisandbox(\\|$)
+    - file read:
+      - ^C:\\sandbox\\starter\.exe$

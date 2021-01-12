@@ -50,3 +50,17 @@ signatures:
     triggers:
     - registry read:
       - ^(HKLM|HKCU)\\SYSTEM\\ControlSet001\\Enum\\IDE(\\|$)
+
+  registry_antivm_scsi_id:
+    short_description: Detects virtualization software using SCSI Disk Identifiers
+    description: Looks up SCSI disk information in the registry. Known anti-VM technique.
+    score: 7
+    ttps:
+    - T1012
+    - T1082
+    - T1497.001
+    triggers:
+    - registry read:
+      - ^(HKLM|HKCU)\\HARDWARE\\DEVICEMAP\\Scsi\\Scsi Port \d+\\Scsi Bus\\d+\\Target Id \d+\\Logical Unit Id \d+\\Identifier(\\|$)
+    - registry read:
+      - ^(HKLM|HKCU)\\SYSTEM\\ControlSet001\\Services\\Disk\\Enum\\.*$

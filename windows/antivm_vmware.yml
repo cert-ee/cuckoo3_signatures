@@ -26,7 +26,7 @@ signatures:
     triggers:
     - file read:
       - ^c:\\windows\\system32\\drivers\\(vmmouse|vmhgfs|vm3dump|vmci|vmmemctl|vmrawdisk|vmusbmouse)\.sys$
-    - file read:
+    - file:
       - \\(hgfs|vmci)$
 
 

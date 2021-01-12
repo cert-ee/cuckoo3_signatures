@@ -1,0 +1,23 @@
+name: antivm_sandboxie
+signatures:
+  mutant_antivm_sandboxie:
+    short_description: Detects Sandboxie through mutex
+    description: Checks for the presence of a mutex present in Sandboxie virtual machines. Common anti-VM technique.
+    score: 7
+    ttps:
+    - T1497.001
+    - T1082
+    triggers:
+    - mutant:
+      - ^Sandboxie_SingleInstanceMutex_Control$
+
+  files_antivm_sandboxies:
+    short_description: Detects Sandboxie through files
+    description: Checks for the presence of specific files or DLLs related to Sandboxie virtual machines.
+    score: 7
+    ttps:
+    - T1497.001
+    - T1082
+    triggers:
+    - file:
+      - \\sbiedll(\.dll)?$

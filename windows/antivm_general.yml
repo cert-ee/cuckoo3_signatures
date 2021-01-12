@@ -1,7 +1,7 @@
 name: antivm_general
 signatures:
   registry_antivm_cpu_check:
-    short_description: Checks the CPU name in the registry
+    short_description: Looks up CPU information in the registry
     description: Looks up registry value(s) which can often be used to detect a virtual environment.
     score: 7
     ttps:
@@ -11,3 +11,42 @@ signatures:
     triggers:
     - registry read:
       - ^(HKLM|HKCU)\\HARDWARE\\DESCRIPTION\\System\\CentralProcessor\\[^\\]+\\ProcessorNameString$
+    - registry read:
+      - ^(HKLM|HKCU)\\Hardware\\Description\\System\\CentralProcessor(\\|$)
+
+  registry_antivm_bios_check:
+    short_description: Checks BIOS information in the registry
+    description: Looks up registry value(s) which can often be used to detect a virtual environment.
+    score: 7
+    ttps:
+    - T1012
+    - T1082
+    - T1497.001
+    triggers:
+    - registry read:
+      - ^(HKLM|HKCU)\\Hardware\\Description\\System\\(VideoBiosVersion|SystemBiosVersion|SystemBiosDate)$
+
+  files_antivm_disk_devices:
+    short_description: Queries disk information
+    description: Enumerates physical disk devices, likely attempts to detect a virtual environment.
+    score: 7
+    ttps:
+    - T1082
+    - T1497.001
+    triggers:
+    - file write:
+      - \\physicaldrive0$
+    - file write:
+      - \\scsi0$
+
+  registry_antivm_ide_disks:
+    short_description: Enumerates IDE drives through the registry
+    description: Looks up specific registry keys which store details of installed IDE drives (if any). Likely anti-VM technique.
+    score: 7
+    ttps:
+    - T1012
+    - T1082
+    - T1497.001
+    triggers:
+    - registry read:
+      - ^(HKLM|HKCU)\\SYSTEM\\ControlSet001\\Enum\\IDE(\\|$)

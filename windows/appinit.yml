@@ -1,0 +1,14 @@
+name: appinit_modification
+signatures:
+  registry_writes_appinit_dlls:
+    short_description: Installs file in AppInit
+    description: Writes a file to the registry list of AppInit DLLs which are loaded into processes requiring user32.dll (i.e. most user-mode processes).
+    score: 9
+    ttps:
+    - T1112
+    - T1546.010
+    triggers:
+    - registry write:
+      - ^HKCU\\SOFTWARE\\Microsoft\\Windows NT\\CurrentVersion\\Windows\\AppInit_DLLs$
+    - registry write:
+      - ^HKLM\\Software\\Microsoft\\Windows NT\\CurrentVersion\\Windows\\AppInit_DLLs$

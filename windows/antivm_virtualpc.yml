@@ -10,4 +10,18 @@ signatures:
     triggers:
     - registry read:
       - ^(HKLM|HKCU)\\SYSTEM\\ControlSet001\\Enum\\PCI\\VEN_5333&DEV_8811&SUBSYS_00000000&REV_00$
+    - registry read:
       - ^(HKLM|HKCU)\\SYSTEM\\ControlSet001\\Services\\vpc-s3$
+
+  files_antivm_virtualpc:
+    short_description: Detects VirtualPC through files
+    description: Checks specific file paths related to VirtualPC VMs. Common anti-VM technique.
+    score: 7
+    ttps:
+    - T1497.001
+    - T1082
+    triggers:
+    - file:
+      - \\vpc\-s3\.sys$
+    - file:
+      - \\vpcubus\.sys$

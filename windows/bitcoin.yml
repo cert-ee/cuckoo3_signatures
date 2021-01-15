@@ -1,0 +1,9 @@
+name: bitcoin_actions
+signatures:
+  files_opencl_dll:
+    short_description: Installs OpenCL library, probably to mine Bitcoin
+    description: Open Computing Language is a framework for creating standardised programs to execute across CPUs, GPUs and other platforms.
+    score: 8
+    triggers:
+    - file write:
+      - \\OpenCL\.dll$

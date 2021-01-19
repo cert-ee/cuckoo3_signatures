@@ -1,0 +1,12 @@
+name: cmd_bcdedit
+signatures:
+  cmd_bcdedit_set:
+    short_description: Modifies boot configuration settings
+    description: Uses bcdedit.exe to modify settings
+    score: 8
+    ttps:
+    - T1490
+    - T1059.003
+    triggers:
+    - commandline:
+      - bcdedit.*\sset\s

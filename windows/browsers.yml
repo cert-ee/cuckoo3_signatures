@@ -1,0 +1,12 @@
+name: browser_interaction
+signatures:
+  creates_ie_bho:
+    short_description: Installs/modifies a Browser Helper Object (BHO)
+    description: BHOs are DLL modules which act as plugins for Internet Explorer.
+    score: 6
+    ttps:
+    - T1176
+    - T1112
+    triggers:
+    - registry write:
+      - ^(HKLM|HKCU)\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Explorer\\Browser Helper Objects(\\|$)

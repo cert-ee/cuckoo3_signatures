@@ -1,0 +1,12 @@
+name: registry_services
+signatures:
+  registry_modifies_firewall_policy:
+    short_description: Modifies local firewall policies
+    description: Writes to registry keys related to Windows firewall settings.
+    score: 9
+    ttps:
+    - T1112
+    - T1562.004
+    triggers:
+    - registry write:
+      - ^HKLM\\System\\ControlSet001\\Services\\SharedAccess\\Parameters\\FirewallPolicy\\

@@ -1,0 +1,11 @@
+name: cmd_netsh
+signatures:
+  cmd_netsh_advfirewall:
+    short_description: Modifies local firewall settings
+    description: Uses netsh.exe to modify the local firewall
+    ttps:
+    - T1562.004
+    - T1059.003
+    triggers:
+    - commandline:  
+      - netsh.*advfirewall.*(firewall|set|reset)

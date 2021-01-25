@@ -1,0 +1,26 @@
+name: family_xmrig
+signatures:
+  xmrig:
+    short_description: XMRig Cryptocurrency Miner
+    description: XMRig is a high performance, open source, cross platform CPU/GPU miner.
+    score: 10
+    family: xmrig
+    triggers:
+    - indicator:
+      - xmrig_mutex
+      indicator:
+      - xmrig_child
+
+indicators:
+  xmrig_mutex:
+    triggers:
+    - mutant create:
+      - ^sfdkjjhgkdsfhgjksd$
+    - mutant create:
+      - ^sfdkjjhgkdsfhgjkjjsd$
+    - mutant create:
+      - ^[a-z]{8,23}$
+  xmrig_child:
+    triggers:
+    - file write:
+      - ^C:\\Windows\\System(32)?\\[a-z]{3,8}\.exe$

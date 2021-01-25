@@ -1,0 +1,14 @@
+name: family_flawedammyy
+signatures:
+  flawedammyy:
+    short_description: FlawedAmmyy RAT
+    description: Remote-access trojan based on leaked code for the Ammyy remote admin software.
+    score: 10
+    family: flawedammyy
+    triggers:
+    - registry write:
+      - ^HKLM\\software\\microsoft\\windows\\currentversion\\run\\sintech client$
+    - registry write:
+      - ^(HKLM|HKCU)\\software\\ammyy(\\|$)
+    - registry write:
+      - ^c:\\programdata\\(ammyy|hr|hr3|wlanspeed)(\\|$)

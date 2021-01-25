@@ -1,0 +1,46 @@
+name: family_remcos
+signatures:
+  remcos:
+    short_description: Remcos RAT
+    description: Remcos is a closed-source remote control and surveillance software.
+    score: 10
+    family: remcos
+    triggers:
+    - registry write:
+      - ^HKCU\\software\remcos-
+    - file write:
+      - ^c:\\users\\user\\appdata\\roaming\\remcos\\(logs\.dat|remcos\.exe)$
+    - indicator:
+      - remcos_mutex_inj
+      indicator:
+      - remcos_log_path
+      file write:
+      - ^c:\\users\\user\\AppData\\Local\\Temp\\(install|uninstall)\.(bat|vbs)$
+    - indicator:
+      - remcos_mutex_inj
+      indicator:
+      - remcos_log_path
+    - indicator:
+      - remcos_reg_pers
+      indicator:
+      - remcos_log_path
+    - indicator:
+      - remcos_mutex_inj
+      indicator:
+      - remcos_reg_pers
+      
+indicators:
+  remcos_mutex_inj:
+    triggers:
+    - mutant:
+      - ^Remcos_Mutex_Inj$
+
+  remcos_log_path:
+    triggers:
+    - file write:
+      - ^c:\\users\\user\\appdata\\roaming\\remcos\\logs\.dat$
+
+  remcos_reg_pers:
+    triggers:
+    - registry:
+      - ^HKCU\\Software\\[0-9-A-Z_\-]{0,16}\\(override|exepathz|Inj)$

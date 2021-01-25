@@ -1,0 +1,12 @@
+name: family_conti
+signatures:
+  conti:
+    short_description: Conti Ransomware
+    description: Ransomware widely considered as a successor to Ryuk.
+    score: 10
+    family: conti
+    triggers:
+    - mutant create:
+      - ^_CONTI_$
+      file create:
+        - \\CONTI_README\.txt$

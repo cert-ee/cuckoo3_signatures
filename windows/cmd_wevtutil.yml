@@ -1,0 +1,22 @@
+name: cmd_wevtutil
+signatures:
+  cmd_wevtutil_clear_logs:
+    short_description: Clears Windows event logs
+    description: Uses wevtutil.exe to delete system log files, likely to hide malicious activity.
+    score: 9
+    ttps:
+    - T1059.003
+    - T1070.001
+    triggers:
+    - commandline:
+      - wevtutil.*\scl\s
+
+  cmd_wevtutil_log_permissions:
+    short_description: Modifies event log access permissions
+    description: Uses wevtutil.exe to change access rights to system logs, likely to enable clearing them to hide malicious activity.
+    score: 9
+    ttps:
+    - T1059.003
+    triggers:
+    - commandline:
+      - wevtutil.*\ssl\s.*/ca\:

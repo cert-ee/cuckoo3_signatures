@@ -1,0 +1,22 @@
+name: cmd_cryptominers
+signatures:
+  cmd_stratum_crypto:
+    short_description: Executes a stratum cryptocurrency mining command
+    score: 9
+    ttps:
+    - T1059.003
+    triggers:
+    - commandline:
+      - stratum+tcp://
+    - commandline:
+      - xmrig
+    - commandline:
+      - xmr\-stak
+    - commandline:
+      - supportxmr\.com:
+    - commandline:
+      - dwarfpool\.com:
+    - commandline:
+      - minergate
+    - commandline:
+      - \-u[ ]*4[0-9AB][123456789ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnopqrstuvwxyz]{93}

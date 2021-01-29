@@ -43,6 +43,9 @@ signatures:
       triggers:
       - registry value: # Check for value at least 1024 bytes long
         - ^.{1024,}$
+        safelist:
+          registry:
+          - ^(HKLM|HKCU)\\Software\\Microsoft\\Windows\\CurrentVersion\\Explorer\\StartPage2\\ProgramsCache$
 
     #registry_writes_null_byte:
     #  short_description: Writes a registry value starting with a null byte

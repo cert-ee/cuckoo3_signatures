@@ -34,3 +34,24 @@ signatures:
         triggers:
         - registry value:
             - \bpowershell(\.exe)?\b
+    registry_writes_large_value:
+      short_description: Writes a long series of bytes to a registry key
+      description: Creates or modifies a registry key with a large amount of byte data, possibly to store a binary or configuration.
+      score: 9
+      ttps:
+      - T1112
+      triggers:
+      - registry value: # Check for value at least 1024 bytes long
+        - ^.{1024,}$
+
+    #registry_writes_null_byte:
+    #  short_description: Writes a registry value starting with a null byte
+    #  description: Creates a registry key with a null value at the start, likely to make it harder to detect.
+    #  score: 9
+    #  ttps:
+    #  - T1112
+    #  triggers:
+    #  - registry value:
+    #    - ^\x00
+    #  - registry write:
+    #    - \\\x00[^\\]*$

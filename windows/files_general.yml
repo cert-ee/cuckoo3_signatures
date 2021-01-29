@@ -1,0 +1,25 @@
+name: files_general
+signatures:
+  files_creates_office_doc:
+    short_description: Creates Office document
+    description: Drops a file to the system with an extension related to Microsoft Office programs.
+    score: 6
+    triggers:
+    - file write:
+      - [^\\]\.(doc|dot|wbk|docx|docm|dotx|dotm|docb|xls|xlt|xlm|xlsx|xlsm|xltx|xltm|xlsb|xla|xlam|xll|xlw|ppt|pot|pps|pptx|pptm|potx|potm|ppam|ppsx|ppsm|sldx|sldm|pub|xps)$
+
+  files_drops_exe_general:
+    short_description: Drops executable file
+    score: 6
+    triggers:
+    - file write:
+      - [^\\]\.(bat|cmd|com|cpl|dll|exe|js|jse|lnk|msi|msh|msh1|msh2|mshxml|msh1xml|msh2xml|ocx|pif|psc1|psc2|ps1|ps1xml|ps2|ps2xml|reg|scf|scr|vb|vbe|vbs|ws|wsc|wse|wsh)$
+
+  files_drops_exe_user:
+    short_description: Drops executable file in user directory
+    score: 6
+    triggers:
+    - file write:
+      - ^[a-zA-Z]:\\Users\\[^\\]+\\AppData\\.*
+    - file write:
+      - ^[a-zA-Z]:\\Documents and Settings\\[^\\]+\\Local Settings\\.*

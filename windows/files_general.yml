@@ -23,3 +23,15 @@ signatures:
       - ^[a-zA-Z]:\\Users\\[^\\]+\\AppData\\.*
     - file write:
       - ^[a-zA-Z]:\\Documents and Settings\\[^\\]+\\Local Settings\\.*
+
+  files_creates_shortcut:
+    short_description: Creates a shortcut link
+    score: 6
+    triggers:
+    - file write:
+      - \\[^\\]+\.lnk$
+      safelist:
+        file write:
+        - C:\\Users\\user\\AppData\\Roaming\\Microsoft\\Windows\\Start Menu\\Programs\\Windows PowerShell( ISE)?\\Windows PowerShell( ISE)?\.lnk$
+        file write:
+        - C:\\ProgramData\\Microsoft\\Windows\\Start Menu\\Programs\\Accessories\\Windows PowerShell( ISE)?\\Windows PowerShell( ISE)?\.lnk$

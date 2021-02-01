@@ -1,0 +1,19 @@
+name: files_putty
+signatures:
+  files_installs_putty:
+    short_description: Detected PuTTY component(s)
+    description: Creates files or registry values related to PuTTY SSH client for Windows.
+    score: 6
+    triggers:
+    - file write:
+      - \\pageant\.exe$
+    - file write:
+      - \\plink\.exe$
+    - file write:
+      - \\pscp\.exe$
+    - file write:
+      - \\psftp\.exe$
+    - file write:
+      - \\putty(gen)?\.(chm|exe)$
+    - registry write:
+      - \\PuTTY(64)?\\

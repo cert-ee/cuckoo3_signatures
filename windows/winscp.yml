@@ -1,0 +1,15 @@
+name: detected_winscp
+signatures:
+  installs_winscp:
+    short_description: Detected WinSCP component(s)
+    description: Creates files, mutexes or registry keys related to WinSCP software.
+    score: 6
+    triggers:
+    - mutant create:
+      - ^WinSCP$
+    - file write:
+      - ^C:\\Users\\user\\AppData\\Roaming\\winscp\.rnd$
+    - file write:
+      - \\WinSCP\\
+    - registry write:
+      - \\WinSCP( 2)?\\

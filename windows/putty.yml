@@ -1,6 +1,6 @@
-name: files_putty
+name: detected_putty
 signatures:
-  files_installs_putty:
+  installs_putty:
     short_description: Detected PuTTY component(s)
     description: Creates files or registry values related to PuTTY SSH client for Windows.
     score: 6

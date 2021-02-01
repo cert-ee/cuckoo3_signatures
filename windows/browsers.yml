@@ -41,6 +41,31 @@ signatures:
     - registry write:
       - ^(HKLM|HKCU)\\SOFTWARE\\Microsoft\\Internet Explorer\\Main\\FeatureControl\\
 
+  registry_modifies_browser_warnings:
+    short_description: Attempts to disable browser security warnings
+    description: Modifies registry keys to prevent warnings being shown to the user for various suspicious actions.
+    score: 7
+    ttps:
+    - T1112
+    - T1562.006
+    triggers:
+    - registry write:
+      - ^(HKLM|HKCU)\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Internet Settings\\WarnOnBadCertRecving$
+    - registry write:
+      - ^(HKLM|HKCU)\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Internet Settings\\WarnOnBadCertSending$
+    - registry write:
+      - ^(HKLM|HKCU)\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Internet Settings\\WarnOnHTTPSToHTTPRedirect$
+    - registry write:
+      - ^(HKLM|HKCU)\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Internet Settings\\WarnOnZoneCrossing$
+    - registry write:
+      - ^*HKLM|HKCU)\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Internet Settings\\WarnOnPostRedirect$
+    - registry write:
+      - ^(HKLM|HKCU)\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Internet Settings\\IEHardenIENoWarn$
+    - registry write:
+      - ^(HKLM|HKCU)\\SOFTWARE\\Microsoft\\Internet Explorer\\Main\\NoProtectedModeBanner$
+    - registry write:
+      - ^(HKLM|HKCU)\\SOFTWARE\\Microsoft\\Internet Explorer\\Main\\IE9RunOncePerInstall$
+
   registry_sets_ie_homepage:
     short_description: Attempts to modify browser home page
     description: Makes registry changes to change the default home/start page for one or more web browsers.

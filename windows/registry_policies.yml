@@ -1,0 +1,12 @@
+name: registry_policies
+signatures:
+  registry_disables_app:
+    short_description: Modifies registry to prevent launching of specific application/executable
+    description: Adds/edits registry values which block specified executables on the system.
+    score: 8
+    ttps:
+    - T1112
+    - T1562.001
+    triggers:
+    - registry write:
+      - ^(HKLM|HKCU)\\Software\\Microsoft\\Windows\\CurrentVersion\\Policies\\Explorer\\DisallowRun

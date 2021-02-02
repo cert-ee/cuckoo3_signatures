@@ -35,3 +35,13 @@ signatures:
         - C:\\Users\\user\\AppData\\Roaming\\Microsoft\\Windows\\Start Menu\\Programs\\Windows PowerShell( ISE)?\\Windows PowerShell( ISE)?\.lnk$
         file write:
         - C:\\ProgramData\\Microsoft\\Windows\\Start Menu\\Programs\\Accessories\\Windows PowerShell( ISE)?\\Windows PowerShell( ISE)?\.lnk$
+
+  file_deletes_zoneid:
+    short_description: Removes Zone Identifier ADS from file(s)
+    description: Deletes the ZoneID Alternate Data Stream from a file, likely to hide that it was downloaded from the internet.
+    ttps:
+    - T1070.004
+    - T1564.004
+    triggers:
+    - file delete:
+      - :Zone\.Identifier$

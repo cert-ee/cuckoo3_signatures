@@ -1,0 +1,43 @@
+name: registry_evasion
+signatures:
+  registry_disables_event_log:
+    short_description: Disables Windows Error Reporting
+    description: Modifies registry key(s) to prevent the system reporting and logging errors which might be caused by malicious activity.
+    score: 9
+    ttps:
+    - T1112
+    - T1562.002
+    triggers:
+    - registry write: # Win10
+      - ^(HKCU|HKLM)\\Software\\Microsoft\\Windows NT\\CurrentVersion\\UnattendSettings\\Windows Error Reporting\\DisableWER$
+    - registry write: # Win7
+      - ^(HKCU|HKLM)\\Software\\Microsoft\\Windows\\Windows Error Reporting\\Disabled$
+
+  registry_modifies_file_vis:
+    short_description: Modifies visibility of hidden/system files
+    description: Sets registry key(s) to alter how Explorer displays hidden files.
+    score: 9
+    ttps:
+    - T1112
+    - T1564.001
+    triggers:
+    - registry write:
+      - ^HKCU\\Software\\Microsoft\\Windows\\CurrentVersion\\Explorer\\Advanced\\ShowSuperHidden$
+
+  registry_file_extension_vis:
+    short_description: Modifies visibility of file extensions
+    description: Sets registry key(s) to change whether or not Explorer displays file extensions.
+    score: 9
+    ttps:
+    - T1112
+    - T1564.001
+    triggers:
+    - registry write:
+      - ^HKCU\\Software\\Microsoft\\Windows\\CurrentVersion\\Explorer\\Advanced\\HideFileExt$
+
+
+    
+
+
+  
+ 

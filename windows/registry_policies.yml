@@ -101,3 +101,13 @@ signatures:
       - ^(HKLM|HKCU)\\Software\\Microsoft\\Windows\\CurrentVersion\\Policies\\Explorer\\Advanced\\TaskbarNoNotification$
     - registry write:
       - ^(HKLM|HKCU)\\Software\\Microsoft\\Windows\\CurrentVersion\\Policies\\Explorer\\HideSCAHealth$
+
+  registry_disables_auto_update:
+    short_description: Disables Windows Auto-Updates
+    description: Modifies registry key(s) to disable automatic updates for the OS.
+    score: 9
+    ttps:
+    - T1112
+    triggers:
+    - registry write:
+      - ^(HKLM|HKCU)\\SOFTWARE\\Policies\\Microsoft\\Windows\\WindowsUpdate\\(AU\\NoAutoUpdate|Auto Update\\AUOptions)$

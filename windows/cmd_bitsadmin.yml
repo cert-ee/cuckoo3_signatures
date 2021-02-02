@@ -1,0 +1,11 @@
+name: cmd_bitsadmin
+signatures:
+  cmd_bitsadmin_download:
+    short_description: Invokes BITSAdmin tool to download a file
+    score: 8
+    ttps:
+    - T1197
+    - T1059.003
+    triggers:
+    - commandline:
+      - bitsadmin .*/(transfer|addfile|replaceremoteprefix)

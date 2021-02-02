@@ -10,3 +10,94 @@ signatures:
     triggers:
     - registry write:
       - ^(HKLM|HKCU)\\Software\\Microsoft\\Windows\\CurrentVersion\\Policies\\Explorer\\DisallowRun
+
+  registry_disables_taskmgr:
+    short_description: Disables Windows Task Manager
+    description: Modifies registry key(s) to prevent use of Task Manager.
+    score: 8
+    ttps:
+    - T1112
+    - T1562.001
+    triggers:
+    - registry write:
+      - ^HKCU\\Software\\Microsoft\\Windows\\CurrentVersion\\Policies\\System\\DisableTaskMgr$
+
+  registry_disables_cmd:
+    short_description: Disables Windows Command Prompt
+    description: Modifies registry key(s) to prevent use of cmd.exe.
+    score: 8
+    ttps:
+    - T1112
+    - T1562.001
+    triggers:
+    - registry write:
+      - ^(HKLM|HKCU)\\Software\\Microsoft\\Windows\\CurrentVersion\\Policies\\System\\DisableCmd$
+
+  registry_disables_regedit:
+    short_description: Disables RegEdit
+    description: Modifies registry key(s) to prevent use of regedit.exe.
+    score: 8
+    ttps:
+    - T1112
+    - T1562.001
+    triggers:
+    - registry write:
+      - ^(HKLM|HKCU)\\Software\\Microsoft\\Windows\\CurrentVersion\\Policies\\System\\DisableRegistryTools$
+
+  registry_bypasses_uac:
+    short_description: Registry UAC bypass
+    description: Modifies registry value(s) to disable UAC checks.
+    score: 9
+    ttps:
+    - T1112
+    - T1562.001
+    - T1548.002
+    triggers:
+    - registry write:
+      - ^HKLM\\Software\\Microsoft\\Windows\\CurrentVersion\\Policies\\System\\(ConsentPromptBehaviorAdmin|ConsentPromptBehaviorUser|EnableLUA|PromptOnSecureDesktop)$
+
+  registry_bypasses_windows_security:
+    short_description: Disables Windows security features
+    description: Modifies registry key(s) to impair Windows security features.
+    score: 9
+    ttps:
+    - T1112
+    - T1562.001
+    - T1562.004
+    triggers:
+    - ^HKLM\\Software\\Microsoft\\(Windows Defender\\Exclusions\\|Security Center\\(Svc\\)?(Antivirus|Firewall|UAC|Updates)(DisableNotify|Override))
+
+  registry_defender_realtime_prot:
+    short_description: Modifies/disables Windows Defender real time protection settings
+    description: Modifies registry key(s) related to Defender configuration.
+    score: 9
+    ttps:
+    - T1112
+    - T1562.001
+    triggers:
+    - registry write:
+      - ^HKLM\\Software\\Policies\\Microsoft\\Windows Defender\\Real-time Protection($|\\)
+
+  registry_disables_system_restore:
+    short_description: Disables System Restore Points
+    description: Modifies registry key(s) to prevent creating or reverting to System Restore Point.
+    score: 9
+    ttps:
+    - T1112
+    - T1490
+    triggers:
+    - registry write:
+      - ^HKLM\\Software\\Policies\\Microsoft\\Windows NT\\SystemRestore\\Disable(Config|SR)$
+
+  registry_disables_taskbar_notifications:
+    short_description: Disables taskbar notifications
+    description: Modifies registry key(s) to prevent popup notifications on the desktop.
+    score: 8
+    ttps:
+    - T1112
+    - T1562.006
+    triggers:
+    - registry write:
+      - ^(HKLM|HKCU)\\Software\\Microsoft\\Windows\\CurrentVersion\\Policies\\Explorer\\Advanced\\TaskbarNoNotification$
+    - registry write:
+      - ^(HKLM|HKCU)\\Software\\Microsoft\\Windows\\CurrentVersion\\Policies\\Explorer\\HideSCAHealth$

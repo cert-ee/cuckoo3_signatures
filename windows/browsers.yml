@@ -78,3 +78,96 @@ signatures:
     - registry write:
       - ^HKEY_CLASSES_ROOT\\Local Settings\\Software\\Microsoft\\Windows\\CurrentVersion\\AppContainer\\Storage\\microsoft\.microsoftedge_8wekyb3d8bbwe\\MicrosoftEdge\\Main\\HomeButtonEnabled$ 
       - ^HKEY_CLASSES_ROOT\\Local Settings\\Software\\Microsoft\\Windows\\CurrentVersion\\AppContainer\\Storage\\microsoft\.microsoftedge_8wekyb3d8bbwe\\MicrosoftEdge\\Main\\HomeButtonPage$
+
+  infostealer_browser_data:
+    short_description: Attempts to access data stored by local web browsers
+    description: Tries to open files used by common browsers to store saved passwords, cookies, user form data etc.
+    score: 7
+    ttps:
+    - T1005
+    - T1552.001
+    triggers:
+    - file read:
+      - ^c:\\users\\user\\appdata\\(roaming|local)\\([^\\]+\\)?chrome\\user data
+    - file read:
+      - ^c:\\users\\user\\appdata\\(roaming|local)\\([^\\]+\\)?chrome sxs\\user data
+    - file read:
+      - ^c:\\users\\user\\appdata\\(roaming|local)\\([^\\]+\\)?amigo\\user data
+    - file read:
+      - ^c:\\users\\user\\appdata\\(roaming|local)\\([^\\]+\\)?orbitum\\user data
+    - file read:
+      - ^c:\\users\\user\\appdata\\(roaming|local)\\([^\\]+\\)?bromium\\user data
+    - file read:
+      - ^c:\\users\\user\\appdata\\(roaming|local)\\([^\\]+\\)?chromium\\user data
+    - file read:
+      - ^c:\\users\\user\\appdata\\(roaming|local)\\([^\\]+\\)?nichrome\\user data
+    - file read:
+      - ^c:\\users\\user\\appdata\\(roaming|local)\\([^\\]+\\)?rockmelt\\user data
+    - file read:
+      - ^c:\\users\\user\\appdata\\(roaming|local)\\([^\\]+\\)?vivaldi\\user data
+    - file read:
+      - ^c:\\users\\user\\appdata\\(roaming|local)\\([^\\]+\\)?go!\\user data
+    - file read:
+      - ^c:\\users\\user\\appdata\\(roaming|local)\\([^\\]+\\)?kometa\\user data
+    - file read:
+      - ^c:\\users\\user\\appdata\\(roaming|local)\\([^\\]+\\)?qip surf\\user data
+    - file read:
+      - ^c:\\users\\user\\appdata\\(roaming|local)\\([^\\]+\\)?epic privacy browser\\user data
+    - file read:
+      - ^c:\\users\\user\\appdata\\(roaming|local)\\([^\\]+\\)?centbrowser\\user data
+    - file read:
+      - ^c:\\users\\user\\appdata\\(roaming|local)\\([^\\]+\\)?elements browser\\user data
+    - file read:
+      - ^c:\\users\\user\\appdata\\(roaming|local)\\([^\\]+\\)?suhba\\user data
+    - file read:
+      - ^c:\\users\\user\\appdata\\(roaming|local)\\([^\\]+\\)?superbird\\user data
+    - file read:
+      - ^c:\\users\\user\\appdata\\(roaming|local)\\([^\\]+\\)?chedot\\user data
+    - file read:
+      - ^c:\\users\\user\\appdata\\(roaming|local)\\([^\\]+\\)?torch\\user data
+    - file read:
+      - ^c:\\users\\user\\appdata\\(roaming|local)\\([^\\]+\\)?yandexbrowser\\user data
+    - file read:
+      - ^c:\\users\\user\\appdata\\(roaming|local)\\([^\\]+\\)?dragon\\user data
+    - file read:
+      - ^c:\\users\\user\\appdata\\(roaming|local)\\([^\\]+\\)?sputnik\\user data
+    - file read:
+      - ^c:\\users\\user\\appdata\\(roaming|local)\\([^\\]+\\)?uran\\user data
+    - file read:
+      - ^c:\\users\\user\\appdata\\(roaming|local)\\([^\\]+\\)?7star\\user data
+    - file read:
+      - ^c:\\users\\user\\appdata\\(roaming|local)\\([^\\]+\\)?secure browser\\user data
+    - file read:
+      - ^c:\\users\\user\\appdata\\(roaming|local)\\([^\\]+\\)?mustang\\user data
+    - file read:
+      - ^c:\\users\\user\\appdata\\(roaming|local)\\([^\\]+\\)?firefox\\profile[s]{0,1}
+    - file read:
+      - ^c:\\users\\user\\appdata\\(roaming|local)\\mozilla\\seamonkey\\profiles\.ini$
+    - file read:
+      - ^c:\\users\\user\\appdata\\(roaming|local)\\([^\\]+\\)?waterfox\\profile[s]{0,1}
+    - file read:
+      - ^c:\\users\\user\\appdata\\(roaming|local)\\([^\\]+\\)?icedragon\\profile[s]{0,1}
+    - file read:
+      - ^c:\\users\\user\\appdata\\(roaming|local)\\([^\\]+\\)?cyberfox\\profile[s]{0,1}
+    - file read:
+      - ^c:\\users\\user\\appdata\\(roaming|local)\\([^\\]+\\)?pale moon\\profile[s]{0,1}
+    - file read:
+      - ^c:\\users\\user\\appdata\\(roaming|local)\\([^\\]+\\)?torbro\\profile[s]{0,1}
+    - file read:
+      - ^c:\\users\\user\\appdata\\(roaming|local)\\bravesoftware\\brave-browser\\user data
+    - file read:
+      - ^c:\\users\\user\\appdata\\roaming\\opera software\\opera( stable)?
+    - file read:
+      - ^c:\\users\\user\\appdata\\roaming\\flock\\browser\\profiles\.ini$
+    - file read:
+      - ^c:\\users\\user\\appdata\\local\\ucbrowser\\
+    - file read:
+      - ^c:\\users\\user\\appdata\\roaming\\netgate technologies\\blackhawk\\profiles\.ini$
+    - file read:
+      - ^c:\\users\\user\\appdata\\roaming\\k\-meleon\\profiles\.ini$
+    - file read:
+      - ^c:\\users\\user\\appdata\\roaming\\mozilla\\icecat\\profiles\.ini$
+    - file read:
+      - ^c:\\users\\user\\appdata\\local\\falkon\\profiles\\profiles\.ini$
+    - file read:
+      - ^c:\\users\\user\\appdata\\roaming\\Moonchild Productions\\Pale Moon\\Profiles\\$

@@ -1,0 +1,87 @@
+name: cryptocurrency_actions
+signatures:
+  files_opencl_dll:
+    short_description: Installs OpenCL library, probably to mine Bitcoin
+    description: Open Computing Language is a framework for creating standardised programs to execute across CPUs, GPUs and other platforms.
+    score: 8
+    triggers:
+    - file write:
+      - \\OpenCL\.dll$
+
+  files_crypto_wallets:
+    short_description: Attempts to access cryptocurrency wallet(s)
+    description: Tries to open file paths related to common cryptocurrency wallets such as Bitcoin, Electrum etc.
+    score: 9
+    triggers:
+    - file read:
+      - \\wallet\.dat$
+    - file read:
+      - \\Bitcoin\\
+    - file read:
+      - \\Electrum\\
+    - file read:
+      - \\MultiBit\\
+    - file read:
+      - \\Litecoin\\
+    - file read: 
+      - \\Namecoin\\
+    - file read:
+      - \\Terracoin\\
+    - file read:
+      - \\PPCoin\\
+    - file read:
+      - \\Primecoin\\
+    - file read:
+      - \\Feathercoin\\
+    - file read:
+      - \\Novacoin\\
+    - file read:
+      - \\Freicoin\\
+    - file read:
+      - \\Devcoin\\
+    - file read:
+      - \\Franko\\
+    - file read:
+      - \\ProtoShares\\
+    - file read:
+      - \\Megacoin\\
+    - file read:
+      - \\Quarkcoin\\
+    - file read:
+      - \\Worldcoin\\
+    - file read:
+      - \\Infinitecoin\\
+    - file read:
+      - \\Ixcoin\\
+    - file read:
+      - \\Anoncoin\\
+    - file read:
+      - \\BBQcoin\\
+    - file read:
+      - \\Digitalcoin\\
+    - file read:
+      - \\Mincoin\\
+    - file read:
+      - \\GoldCoin \(GLD\)\\
+    - file read:
+      - \\Yacoin\\
+    - file read:
+      - \\Zetacoin\\
+    - file read:
+      - \\Fastcoin\\
+    - file read:
+      - \\I0coin\\
+    - file read:
+      - \\Tagcoin\\
+    - file read:
+      - \\Bytecoin\\
+    - file read:
+      - \\Florincoin\\
+    - file read:
+      - \\Phoenixcoin\\
+    - file read:
+      - \\Luckycoin\\
+    - file read:
+      - \\Craftcoin\\
+    - file read:
+      - \\Junkcoin\\

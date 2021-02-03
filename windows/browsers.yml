@@ -190,3 +190,10 @@ signatures:
       - \\enablespdy3_0$
     - commandline:
       - chrome(\.exe)?.*\-\-use\-spdy=off
+
+  files_modifies_firefox_config:
+    short_description: Modifies Mozilla Firefox configuration file
+    score: 9
+    triggers:
+    - file write:
+      - ^C:\\Users\\user\\AppData\\Roaming\\Mozilla\\Firefox\\Profiles\\[^\\]+\\(prefs|user)\.js$

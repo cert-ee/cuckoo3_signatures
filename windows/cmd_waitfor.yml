@@ -1,0 +1,12 @@
+name: cmd_waitfor
+signatures:
+  cmd_waitfor_delay:
+    short_description: Invokes WaitFor to delay execution
+    description: Windows waitfor utility can be used to pause execution until a specific signal is received, or a defined timeout is reached.
+    score: 9
+    ttps:
+    - T1059.003
+    - T1497.003
+    triggers:
+    - commandline:
+      - waitfor.+\/t \d+

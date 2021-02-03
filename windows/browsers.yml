@@ -183,7 +183,6 @@ signatures:
     description: SPDY3 can inhibit some web and browser injection techniques, so certain infostealers disable it.
     score: 9
     ttps:
-    - T1112
     - T1562.001
     triggers:
     - registry write:
@@ -197,3 +196,15 @@ signatures:
     triggers:
     - file write:
       - ^C:\\Users\\user\\AppData\\Roaming\\Mozilla\\Firefox\\Profiles\\[^\\]+\\(prefs|user)\.js$
+
+  disables_browser_http2:
+    short_description: Attempts to disable HTTP2 in browser configuration
+    description: Infostealers sometimes disable HTTP2 to improve infostealing capabilities.
+    score: 9
+    ttps:
+    - T1562.001
+    triggers:
+    - registry write:
+      - ^(HKLM|HKCU)\\System\\ControlSet001\\Services\\HTTP\\Parameters\\(EnableHttp2Tls|EnableHttp2ClearText)$
+    - commandline:
+      - chrome(\.exe)?.*\-\-disable\-http2

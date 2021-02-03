@@ -171,3 +171,9 @@ signatures:
       - ^c:\\users\\user\\appdata\\local\\falkon\\profiles\\profiles\.ini$
     - file read:
       - ^c:\\users\\user\\appdata\\roaming\\Moonchild Productions\\Pale Moon\\Profiles\\$
+    - registry read:
+      -  ^(HKLM|HKCU)\\Software\\Mozilla\\SeaMonkey
+    - registry read:
+      - ^(HKLM|HKCU)\\Software\\Opera Software
+    - registry read:
+      - ^(HKLM|HKCU)\\Software\\Mozilla\\Mozilla Firefox  

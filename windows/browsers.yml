@@ -177,3 +177,16 @@ signatures:
       - ^(HKLM|HKCU)\\Software\\Opera Software
     - registry read:
       - ^(HKLM|HKCU)\\Software\\Mozilla\\Mozilla Firefox  
+
+  disables_spdy3:
+    short_description: Attempts to disable SPDY support in browser(s)
+    description: SPDY3 can inhibit some web and browser injection techniques, so certain infostealers disable it.
+    score: 9
+    ttps:
+    - T1112
+    - T1562.001
+    triggers:
+    - registry write:
+      - \\enablespdy3_0$
+    - commandline:
+      - chrome(\.exe)?.*\-\-use\-spdy=off

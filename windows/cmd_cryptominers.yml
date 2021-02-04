@@ -13,9 +13,9 @@ signatures:
     - commandline:
       - xmr\-stak
     - commandline:
-      - supportxmr\.com:
+      - supportxmr\.com
     - commandline:
-      - dwarfpool\.com:
+      - dwarfpool\.com
     - commandline:
       - minergate
     - commandline:

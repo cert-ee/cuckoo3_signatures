@@ -198,7 +198,7 @@ signatures:
       - ^C:\\Users\\user\\AppData\\Roaming\\Mozilla\\Firefox\\Profiles\\[^\\]+\\(prefs|user)\.js$
 
   disables_browser_http2:
-    short_description: Attempts to disable HTTP2 in browser configuration
+    short_description: Attempts to disable HTTP2
     description: Infostealers sometimes disable HTTP2 to improve infostealing capabilities.
     score: 9
     ttps:

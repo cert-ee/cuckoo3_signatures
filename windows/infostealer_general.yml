@@ -1,0 +1,134 @@
+name: infostealer_general
+signatures:
+  infostealer_ftp_data:
+    short_description: Harvests credentials from local FTP clients
+    score: 7
+    ttps:
+    - T1005
+    - T1552.001
+    triggers:
+    - file read:
+      - ^c:\\users\\user\\appdata\\roaming\\filezilla\\recentservers\.xml$
+    - file read:
+      - ^c:\\users\\user\\appdata\\roaming\\coreftp\\sites\.idx$
+    - file read:
+      - ^c:\\ftp navigator\\ftplist\.txt$
+    - file read:
+      - ^c:\\users\\user\\appdata\\roaming\\smartftp\\client 2.0\\favorites\\quick connect\\
+
+ infostealer_email_clients:
+    short_description: Harvests data from local email clients
+    score: 7
+    ttps:
+    - T1005
+    - T1552.001
+    triggers:
+    - indicator:
+      - ftp_client_files
+    - indicator:
+      - ftp_client_registry
+
+indicators:
+  ftp_client_files:
+    triggers: 
+     - file read:
+      - ^c:\\users\\user\\appdata\\roaming\\postbox\\profiles\.ini$
+    - file read:
+      - ^c:\\users\\user\\appdata\\(roaming|local)\\([^\\]+\\)?thunderbird\\profile[s]{0,1}
+    - file read:
+      - \\CuteFTP( Pro| Lite)?\\([^\\]+\\)?sm\.dat
+    - file read:
+      - \\FlashFXP\\.*\\(Sites|Quick|History)\.dat$
+    - file read:
+      - \\VanDyke\\Config\\Sessions.*
+    - file read:
+      - \\LeechFTP\\bookmark\.dat$
+    - file read:
+      - ^c:\\Users\\user\\appdata\\roaming\\SmartFTP\\
+    - file read:
+      - \\TurboFTP\\
+    - file read:
+      - \\FTPRush\\
+    - file read:
+      - \\LeapFTP\\
+    - file read:
+      - \\FTPGetter\\
+    - file read:
+      - \\ALFTP\\
+    - file read:
+      - \\Ipswitch\\WS_FTP.*
+    - file read:
+      - \\wcx_ftp\.ini$
+    - file read:
+      - \\32BitFtp\.ini$
+    - file read:
+      - \\CoffeeCup Software\\SharedSettings.*(sqlite|ccs)$
+    - file read:
+      - \\ExpanDrive\\drives\.js$
+    - file read:
+      - \\FileZilla\\(sitemanager|recentservers|filezilla)\.xml$
+ 
+  ftp_client_registry:
+    triggers:
+    - registry read:
+      - ^HKCU\\Software\\Microsoft\\FTP
+    - registry read:
+      - ^HKCU\\Software\\FTP Explorer\\
+    - registry read:
+      - ^HKCU\\Software\\SmartFTP\\ 
+    - registry read:
+      - \\Software\\\\Far.*\\\\Hosts$
+    - registry read:
+      - \\Software\\\\Far.*\\\\FTPHost$
+    - registry read:
+      - \\Software\\\\Far.*?\\\\FTP\\\\Hosts$
+    - registry read:
+      - \\Software\\\\TurboFTP\\
+    - registry read:
+      - \\Software\\\\Robo-FTP.*\\\\FTPServers$
+    - registry read:
+      - \\Software\\\\Ghisler\\\\Windows Commander$
+    - registry read:
+      - \\Software\\\\Ghisler\\\\Total Commander$
+    - registry read:
+      - \\Software\\\\BPFTP\\
+    - registry read:
+      - \\Software\\\\BulletProof Software\\\\BulletProof FTP Client\\
+    - registry read:
+      - \\Software\\\\BPFTP\\\\Bullet\\ Proof\\ FTP
+    - registry read:
+      - \\Software\\\\FTP\\ Explorer\\\\Profiles
+    - registry read:
+      - \\CuteFTP . Professional\\QCToolbar
+    - registry read:
+      - \\Software\\VanDyke\\SecureFX
+    - registry read:
+      - \\Software\\South River Technologies\\WebDrive
+    - registry read:
+      - \\Software\\LinasFTP
+    - registry read:
+      - \\Software\\SoftX\.org\\FTPClient
+    - registry read:
+      - \\Software\\Sota\\FFFTP
+    - registry read:
+      - \\Software\\LeechFTP
+    - registry read:
+      - \\Software\\CoffeeCup Software
+    - registry read:
+      - \\Software\\FlashFXP
+    - registry read:
+      - \\Software\\FTP Explorer\\FTP Explorer
+    - registry read:
+      - \\Software\\FlashPeak\\BlazeFtp
+    - registry read:
+      - \\Software\\LeapWare
+    - registry read:
+      - \\Software\\SimonTatham\\PuTTY
+    - registry read:
+      - \\Software\\Cryer\\WebSitePublisher
+    - registry read:
+      - \\Software\\ExpanDrive
+    - registry read:
+      - \\Software\\AceBIT
+    - registry read:
+      - \\Software\\FTPWare\\CoreFTP

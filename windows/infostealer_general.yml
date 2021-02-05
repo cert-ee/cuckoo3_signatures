@@ -7,15 +7,11 @@ signatures:
     - T1005
     - T1552.001
     triggers:
-    - file read:
-      - ^c:\\users\\user\\appdata\\roaming\\filezilla\\recentservers\.xml$
-    - file read:
-      - ^c:\\users\\user\\appdata\\roaming\\coreftp\\sites\.idx$
-    - file read:
-      - ^c:\\ftp navigator\\ftplist\.txt$
-    - file read:
-      - ^c:\\users\\user\\appdata\\roaming\\smartftp\\client 2.0\\favorites\\quick connect\\
-
+    - indicator:
+      - ftp_client_files
+    - indicator:
+      - ftp_client_registry
+    
   infostealer_email_clients:
     short_description: Harvests data from local email clients
     score: 7
@@ -23,18 +19,14 @@ signatures:
     - T1005
     - T1552.001
     triggers:
-    - indicator:
-      - ftp_client_files
-    - indicator:
-      - ftp_client_registry
-
-indicators:
-  ftp_client_files:
-    triggers: 
     - file read:
       - ^c:\\users\\user\\appdata\\roaming\\postbox\\profiles\.ini$
     - file read:
       - ^c:\\users\\user\\appdata\\(roaming|local)\\([^\\]+\\)?thunderbird\\profile[s]{0,1}
+
+indicators:
+  ftp_client_files:
+    triggers: 
     - file read:
       - \\CuteFTP( Pro| Lite)?\\([^\\]+\\)?sm\.dat
     - file read:
@@ -67,7 +59,13 @@ indicators:
       - \\ExpanDrive\\drives\.js$
     - file read:
       - \\FileZilla\\(sitemanager|recentservers|filezilla)\.xml$
- 
+    - file read:
+      - ^c:\\ftp navigator\\ftplist\.txt$
+    - file read:
+      - ^c:\\users\\user\\appdata\\roaming\\smartftp\\client 2.0\\favorites\\quick connect\\
+    - file read:
+      - ^c:\\users\\user\\appdata\\roaming\\coreftp\\sites\.idx$
+
   ftp_client_registry:
     triggers:
     - registry read:

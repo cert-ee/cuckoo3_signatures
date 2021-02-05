@@ -19,4 +19,4 @@ signatures:
     - T1059.003
     triggers:
     - commandline:
-      - wevtutil.*\ssl\s.*/ca\:
+      - 'wevtutil.*\ssl\s.*/ca\:'

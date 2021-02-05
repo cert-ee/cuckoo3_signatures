@@ -3,7 +3,8 @@ signatures:
   amadey:
     short_description: Detected Amadey Trojan
     description: Amadey bot is a simple trojan bot primarily used for collecting reconnaissance.
-    tags: trojan
+    score: 10
+    tags: [trojan]
     family: amadey
     triggers:
     - file write:
@@ -15,17 +16,16 @@ signatures:
    
 indicators:
   amadey_plugins:
+    triggers:
     - file write:
       - ^C:\\ProgramData\\[a-z0-9]{10,15}\\cred\.dll$
-      file write:
       - ^C:\\ProgramData\\[a-z0-9]{10,15}\\scr\.dll$
     - file write:
       - ^C:\\Users\\user\\AppData\\Local\\Temp\\cred\.dll$
-      file write:
       - ^C:\\Users\\user\\AppData\\Local\\Temp\\scr\.dll$
 
   amadey_persistence:
+    triggers:
     - registry write:
       - ^HKCU\\Software\\Microsoft\\Windows\\CurrentVersion\\Run\\cred$
-      registry write:
       - ^HKCU\\Software\\Microsoft\\Windows\\CurrentVersion\\Run\\scr$     

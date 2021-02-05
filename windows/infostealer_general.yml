@@ -16,7 +16,7 @@ signatures:
     - file read:
       - ^c:\\users\\user\\appdata\\roaming\\smartftp\\client 2.0\\favorites\\quick connect\\
 
- infostealer_email_clients:
+  infostealer_email_clients:
     short_description: Harvests data from local email clients
     score: 7
     ttps:
@@ -31,7 +31,7 @@ signatures:
 indicators:
   ftp_client_files:
     triggers: 
-     - file read:
+    - file read:
       - ^c:\\users\\user\\appdata\\roaming\\postbox\\profiles\.ini$
     - file read:
       - ^c:\\users\\user\\appdata\\(roaming|local)\\([^\\]+\\)?thunderbird\\profile[s]{0,1}

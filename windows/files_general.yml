@@ -6,14 +6,14 @@ signatures:
     score: 6
     triggers:
     - file write:
-      - [^\\]\.(doc|dot|wbk|docx|docm|dotx|dotm|docb|xls|xlt|xlm|xlsx|xlsm|xltx|xltm|xlsb|xla|xlam|xll|xlw|ppt|pot|pps|pptx|pptm|potx|potm|ppam|ppsx|ppsm|sldx|sldm|pub|xps)$
+      - .*[^\\]\.(doc|dot|wbk|docx|docm|dotx|dotm|docb|xls|xlt|xlm|xlsx|xlsm|xltx|xltm|xlsb|xla|xlam|xll|xlw|ppt|pot|pps|pptx|pptm|potx|potm|ppam|ppsx|ppsm|sldx|sldm|pub|xps)$
 
   files_drops_exe_general:
     short_description: Drops executable file
     score: 6
     triggers:
     - file write:
-      - [^\\]\.(bat|cmd|com|cpl|dll|exe|js|jse|lnk|msi|msh|msh1|msh2|mshxml|msh1xml|msh2xml|ocx|pif|psc1|psc2|ps1|ps1xml|ps2|ps2xml|reg|scf|scr|vb|vbe|vbs|ws|wsc|wse|wsh)$
+      - .*[^\\]\.(bat|cmd|com|cpl|dll|exe|js|jse|lnk|msi|msh|msh1|msh2|mshxml|msh1xml|msh2xml|ocx|pif|psc1|psc2|ps1|ps1xml|ps2|ps2xml|reg|scf|scr|vb|vbe|vbs|ws|wsc|wse|wsh)$
 
   files_drops_exe_user:
     short_description: Drops executable file in user directory
@@ -39,6 +39,7 @@ signatures:
   file_deletes_zoneid:
     short_description: Removes Zone Identifier ADS from file(s)
     description: Deletes the ZoneID Alternate Data Stream from a file, likely to hide that it was downloaded from the internet.
+    score: 6
     ttps:
     - T1070.004
     - T1564.004

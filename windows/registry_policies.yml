@@ -65,7 +65,8 @@ signatures:
     - T1562.001
     - T1562.004
     triggers:
-    - ^HKLM\\Software\\Microsoft\\(Windows Defender\\Exclusions\\|Security Center\\(Svc\\)?(Antivirus|Firewall|UAC|Updates)(DisableNotify|Override))
+    - registry write:
+      - ^HKLM\\Software\\Microsoft\\(Windows Defender\\Exclusions\\|Security Center\\(Svc\\)?(Antivirus|Firewall|UAC|Updates)(DisableNotify|Override))
 
   registry_defender_realtime_prot:
     short_description: Modifies/disables Windows Defender real time protection settings

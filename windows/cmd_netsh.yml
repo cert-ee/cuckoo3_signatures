@@ -3,6 +3,7 @@ signatures:
   cmd_netsh_advfirewall:
     short_description: Modifies local firewall settings
     description: Uses netsh.exe to modify the local firewall
+    score: 7
     ttps:
     - T1562.004
     - T1059.003

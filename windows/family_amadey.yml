@@ -11,8 +11,10 @@ signatures:
       - ^C:\\ProgramData\\[a-z0-9]{10,15}\\bdif\.exe$
     - indicator:
       - amadey_plugins
-      indicator:
       - amadey_persistence
+    - indicator:
+      - amadey_plugins
+      - amadey_screenshot
    
 indicators:
   amadey_plugins:
@@ -29,3 +31,8 @@ indicators:
     - registry write:
       - ^HKCU\\Software\\Microsoft\\Windows\\CurrentVersion\\Run\\cred$
       - ^HKCU\\Software\\Microsoft\\Windows\\CurrentVersion\\Run\\scr$     
+
+  amadey_screenshot:
+    triggers:
+    - file write:
+      - ^C:\\Users\\user\\AppData\\Local\\Temp\\[0-9]{12}\.jpg$

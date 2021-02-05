@@ -3,6 +3,8 @@ signatures:
   infostealer_ftp_data:
     short_description: Harvests credentials from local FTP clients
     score: 7
+    tags:
+    - stealer
     ttps:
     - T1005
     - T1552.001
@@ -15,6 +17,8 @@ signatures:
   infostealer_email_clients:
     short_description: Harvests data from local email clients
     score: 7
+    tags:
+    - stealer
     ttps:
     - T1005
     - T1552.001

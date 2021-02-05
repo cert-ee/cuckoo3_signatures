@@ -1,5 +1,18 @@
 name: registry_persistence
 signatures:
+    registry_write_runkey:
+        short_description: Add Run key to start application
+        description: Adds run entry to the registry to gain persistence across system reboots.
+        score: 7
+        ttps:
+        - T1547.001
+        - T1112
+        triggers:
+        - registry write:
+          - ^(HKLM|HKCU)\\Software\\Microsoft\\Windows\\CurrentVersion\\Run(Once|OnceEx|Services|ServicesOnce)?(\\|$)
+        - registry write:
+          - ^(HKLM|HKCU)\\Software\\Microsoft\\Windows\\CurrentVersion\\Policies\\Explorer\\Run(\\|$)
+
     registry_write_javascript:
         short_description: Wrote Javascript to registry key
         description: Detected Javascript code in string(s) written to the registry. Likely persistence mechanism.

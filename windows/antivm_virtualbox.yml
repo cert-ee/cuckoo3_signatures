@@ -35,6 +35,6 @@ signatures:
     - file read: # Binaries
       - ^C:\\Windows\\System32\\(VBoxControl|VBoxService|VBoxTray|VBoxDrvInst|VBoxWHQLFake)\.exe$
     - file read: # Uninstallers
-      - ^C:\program files( \(x86\))?\\Oracle\\VirtualBox Guest Additions\\uninst\.exe(\.dll)?$
+      - ^C:\\program files( \(x86\))?\\Oracle\\VirtualBox Guest Additions\\uninst\.exe(\.dll)?$
     - file read: # Devices
       - .*VBox(Guest|Mouse|Video|MiniRdrDN|MiniRdDN|TrayIPC)$

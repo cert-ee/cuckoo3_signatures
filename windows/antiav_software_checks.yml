@@ -13,7 +13,7 @@ signatures:
     - registry read:
       - ^(HKLM|HKCU)\\SYSTEM\\ControlSet001\\Services\\avast! Antivirus($|\\)
     - registry read: # BitDefender
-      - ^(HKLM|HKCU|\\Software\\Bitdefender\\QuickScan($|\\)
+      - ^(HKLM|HKCU)\\Software\\Bitdefender\\QuickScan($|\\)
     - registry read:
       - ^(HKLM|HKCU)\\Software\\ESET\\NOD($|\\)
     - registry read:

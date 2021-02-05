@@ -58,7 +58,7 @@ signatures:
     - registry write:
       - ^(HKLM|HKCU)\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Internet Settings\\WarnOnZoneCrossing$
     - registry write:
-      - ^*HKLM|HKCU)\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Internet Settings\\WarnOnPostRedirect$
+      - ^(HKLM|HKCU)\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Internet Settings\\WarnOnPostRedirect$
     - registry write:
       - ^(HKLM|HKCU)\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Internet Settings\\IEHardenIENoWarn$
     - registry write:

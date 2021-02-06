@@ -1,0 +1,25 @@
+name: family_warzone
+signatures:
+  warzone:
+    short_description: Detected Warzone RAT
+    description: WarzoneRat is a native RAT developed in C++ with multiple plugins sold as a MaaS.
+    score: 10
+    tags:
+    - trojan
+    - stealer
+    family: warzone
+    triggers:
+    - indicator:
+      - warzone_filepath
+      - warzone_regkey
+    
+indicators:
+  warzone_filepath:
+    triggers:
+    - file:
+      - ^C:\\Program Files\\Microsoft DN1$
+
+  warzone_regkey:
+    triggers:
+    - registry:
+      - ^HKCU\\Software\\Microsoft\\Windows\\CurrentVersion\\Explorer\\[A-Z0-9]{10}$

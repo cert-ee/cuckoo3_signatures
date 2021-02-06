@@ -46,3 +46,13 @@ signatures:
     triggers:
     - file delete:
       - :Zone\.Identifier$
+
+  file_drops_startup:
+    short_description: Drops startup file
+    score: 7
+    ttps:
+    - T1547.001
+    triggers:
+    - file write:
+      - ^C:\\Users\\user\\AppData\\Roaming\\Microsoft\\(Word|Windows\\Start Menu\\Programs)\\Startup\\
+

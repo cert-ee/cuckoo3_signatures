@@ -13,6 +13,16 @@ signatures:
     - registry write:
       - ^(HKLM|HKCU)\\Software\\Microsoft\\Windows\\CurrentVersion\\Policies\\Explorer\\Run(\\|$)
 
+  registry_winlogon_persistence:
+    short_description: Modifies WinLogon for persistence
+    score: 8
+    ttps:
+    - T1112
+    - T1547.004
+    triggers:
+    - registry write:
+      - ^(HKLM|HKCU)\\Software\\Microsoft\\Windows NT\\CurrentVersion\\Winlogon\\(Shell|Userinit)(\\|$)
+
   registry_write_javascript:
     short_description: Wrote Javascript to registry key
     description: Detected Javascript code in string(s) written to the registry. Likely persistence mechanism.

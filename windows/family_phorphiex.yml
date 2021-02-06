@@ -1,0 +1,42 @@
+name: family_phorphiex
+signatures:
+  phorphiex:
+    short_description: Detected Phorphiex
+    description: Malware family which infects systems to distribute other malicious payloads such as ransomware, stealers and cryptominers.
+    score: 10
+    tags:
+    - worm
+    - trojan
+    - loader
+    family: phorphiex
+    triggers:
+    - indicator:
+      - phorphiex_run_key
+      - phorphiex_file_drop
+
+indicators:
+  phorphiex_run_key:
+    triggers:
+    - registry write:
+      - ^HKCU\\Software\\Microsoft\\Windows\\CurrentVersion\\Run\\Microsoft Windows Service(s)?$
+    - registry write:
+      - ^HKCU\\Software\\Microsoft\\Windows\\CurrentVersion\\Run\\WCfgMgr32$
+    - registry write:
+      - ^HKCU\\Software\\Microsoft\\Windows\\CurrentVersion\\Run\\Host Process for Windows Services$
+
+# C:\10796170545649\winsvcs.exe
+# C:\7553328726135\winsvcs.exe
+# C:\21726306711435\winsvcs.exe
+# C:\3173373216149\winsvcs.exe
+# C:\35363023019730\winsvcs.exe
+# C:\Windows\3049586940303040\wcfgmgr32.exe
+# C:\137731028227822\svchost.exe
+# C:\Users\Admin\AppData\Local\Temp\3752234006.exe
+  phorphiex_file_drop:
+    triggers:
+    - file write:
+      - ^C:\\\d{13,15}\\(winsvc|winsvcs|winmgr|wcfgmgr32|svchost)\.exe$
+      - ^C:\\Users\\user\\AppData\\Local\\Temp\\(\d{5}|\d{10})\.exe$
+    - file write:
+      - ^C:\\Windows\\(\d{16}|M\-\d{19})\\(winsvc|winsvcs|winmgr|wcfgmgr32|svchost)\.exe$
+      - ^C:\\Users\\user\\AppData\\Roaming\\(winsvc|winsvcs|winmgr|wcfgmgr32|svchost)\.txt$

@@ -1,0 +1,12 @@
+name: cmd_schtasks
+signatures:
+  cmd_schtasks_create:
+    short_description: Creates scheduled task via commandline
+    description: Uses schtasks.exe to create a new scheduled task.
+    score: 8
+    ttps:
+    - T1059.003
+    - T1053.005
+    triggers:
+    - commandline:
+      - ^schtasks(\.exe)?.*\W/create\W 

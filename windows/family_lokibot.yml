@@ -1,0 +1,32 @@
+name: family_lokibot
+signatures:
+  lokibot:
+    short_description: Detected Lokibot
+    description: Lokibot is a Password and CryptoCoin Wallet Stealer.
+    score: 10
+    tags:
+    - trojan
+    - stealer
+    family: lokibot
+    triggers:
+    - file write:
+      - ^c:\\users\\user\\appdata\\roaming\\[a-f0-9]{6}\\[a-f0-9]{6}\.(hdb|lck)$
+    - indicator:
+      - lokibot_file_drop
+      - lokibot_antiresearcher_key 
+
+indicators:
+  lokibot_file_drop:
+    triggers:
+    - file write:
+      - ^C:\\Windows\\temp\\[a-z0-9]+\.inf$
+
+  lokibot_antiresearcher_key:
+    triggers:
+    - registry write:
+      - ^HKCU\\Software\\Fucku$
+
+  #lokibot_ua:
+  #  triggers:
+  #  - user-agent:
+  #    - ^Mozilla/4\.08 \(Charon\; Inferno\)$

@@ -16,7 +16,7 @@ signatures:
       - .*[^\\]\.(bat|cmd|com|cpl|dll|exe|js|jse|lnk|msi|msh|msh1|msh2|mshxml|msh1xml|msh2xml|ocx|pif|psc1|psc2|ps1|ps1xml|ps2|ps2xml|reg|scf|scr|vb|vbe|vbs|ws|wsc|wse|wsh)$
 
   files_drops_exe_user:
-    short_description: Drops executable file in user directory
+    short_description: Drops file in user directory
     score: 6
     triggers:
     - file write:

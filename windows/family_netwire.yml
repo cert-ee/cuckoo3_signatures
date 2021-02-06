@@ -1,0 +1,15 @@
+name: family_netwire
+signatures:
+  netwire:
+    short_description: Detected Netwire RAT
+    description: Netwire is a RAT with password stealing, keylogging, and remote control functionality.
+    score: 10
+    tags:
+    - botnet
+    - stealer
+    family: netwire
+    triggers:
+    - registry:
+      - ^HKCU\\SOFTWARE\\NetWire$
+      - ^HKCU\\Software\\NetWire\\HostId$
+      - ^HKCU\\Software\\NetWire\\Install Date$

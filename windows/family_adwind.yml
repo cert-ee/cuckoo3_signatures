@@ -1,0 +1,36 @@
+name: family_adwind
+signatures:
+  adwind:
+    short_description: Detected AdWind
+    description: A Java-based RAT family operated as malware-as-a-service.
+    score: 10
+    tags:
+    - trojan
+    triggers:
+    - indicator:
+      - adwind_vbs_script
+    - indicator:
+      - adwind_plugin_file
+      - adwind_jar_file
+      - adwind_plugin_command
+
+indicators:
+  adwind_plugin_file:
+    triggers:
+    - file:
+      - ^c:\\users\\user\\\.plugins[0-9]{1}$
+
+  adwind_vbs_script:
+    triggers:
+    - file write:
+      - \\AppData\\Local\\Temp\\Retrive[0-9]+\.vbs$
+
+  adwind_jar_file:
+    triggers:
+    - file write:
+      - ^c:\\users\\user\\appdata\\roaming\\winsys\\winsys\.jar$
+
+  adwind_plugin_command:
+    triggers:
+    - commandline:
+      - ^attrib(\.exe)? \+H C:\\Users\\[^\\]+\\\.plugins[0-9]{1}$

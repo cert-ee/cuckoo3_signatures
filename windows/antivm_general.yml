@@ -40,8 +40,8 @@ signatures:
       - \\scsi0$
 
   registry_antivm_ide_disks:
-    short_description: Enumerates IDE drives through the registry
-    description: Looks up specific registry keys which store details of installed IDE drives (if any). Likely anti-VM technique.
+    short_description: Enumerates drives through the registry
+    description: Looks up specific registry keys which store details of installed drives (if any). Likely anti-VM technique.
     score: 7
     ttps:
     - T1012
@@ -50,6 +50,8 @@ signatures:
     triggers:
     - registry read:
       - ^(HKLM|HKCU)\\SYSTEM\\ControlSet001\\Enum\\IDE(\\|$)
+    - registry read:
+      - ^(HKLM|HKCU)\\System\\ControlSet001\\Services\\Disk\\Enum(\\|$)
 
   registry_antivm_scsi_id:
     short_description: Detects virtualization software using SCSI Disk Identifiers

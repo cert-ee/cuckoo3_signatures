@@ -35,9 +35,13 @@ signatures:
     - registry write:
       - ^HKCU\\Software\\Microsoft\\Windows\\CurrentVersion\\Explorer\\Advanced\\HideFileExt$
 
-
-    
-
-
-  
- 
+  registry_disables_defender_spynet:
+    short_description: Disables Windows Defender SpyNet reporting
+    score: 10
+    ttps:
+    - T1112
+    - T1562.001
+    triggers:
+    - registry write:
+      - ^HKLM\\SOFTWARE\\Microsoft\\(Microsoft AntiMalware|Windows Defender)\\SpyNet\\SubmitSamplesConsent$
+      - ^HKLM\\SOFTWARE\\Microsoft\\(Microsoft AntiMalware|Windows Defender)\\SpyNet\\SpyNetReporting$

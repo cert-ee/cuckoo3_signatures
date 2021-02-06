@@ -1,0 +1,33 @@
+name: family_hawkeye
+signatures:
+  hawkeye:
+    short_description: Detected HawkEye
+    description: HawkEye is a malware kit that has seen continuous development since at least 2013.
+    score: 10
+    tags:
+    - keylogger
+    - trojan
+    - stealer
+    - spyware
+    family: hawkeye
+    triggers:
+    - file write:
+      - ^c:\\windows\\microsoft\.net\\framework\\v\d{1}\.\d+\.\d+\\.{2,}\-.{2,}\\(reborn\ stub\.resources\\)?reborn\ stub\.resources\.(exe|dll)$
+    - file write:
+      - ^c:\\users\\user\\appdata\\roaming\\windowsupdate\.exe$
+    - file write:
+      - ^c:\\users\\user\\appdata\\local\\temp\\holdermail\.txt$
+    - commandline:
+      - ^vbc(\.exe)? .*(?i)\/stext.+\\local\\temp\\holdermail\.txt$
+    - commandline:
+      - ^vbc(\.exe)? .*(?i)\/stext.+\\local\\temp\\holderwb\.txt$
+    - commandline:
+      - ^vbc(\.exe)? .*(?i)\/stext\s.+\\local\\temp\\tmp.+\.tmp$
+    - file write:
+      - ^c:\\users\\user\\appdata\\local\\temp\\holderwb\.txt$
+    - file:
+      - ^c:\\users\\user\\appdata\\roaming\\pid\.txt$
+    - file:
+      - ^c:\\users\\user\\appdata\\roaming\\pidloc\.txt$
+    - file read:
+      - ^c:\\users\\user\\appdata\\local\\temp\\sysinfo\.txt$

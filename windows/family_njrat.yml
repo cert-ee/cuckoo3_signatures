@@ -1,0 +1,12 @@
+name: family_njrat
+signatures:
+  njrat:
+    short_description: Detect NjRAT
+    description: Widely used RAT written in .NET.
+    score: 10
+    tags:
+    - trojan
+    family: njrat
+    triggers:
+    - registry write:
+      - ^HKCU\\Software\\[a-f0-9]{32}\\\[kl\]$

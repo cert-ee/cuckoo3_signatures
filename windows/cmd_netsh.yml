@@ -10,3 +10,13 @@ signatures:
     triggers:
     - commandline:  
       - netsh.*advfirewall.*(firewall|set|reset)
+
+  cmd_netsh_allowedprogram:
+    short_description: Adds exception to Firewall Allowed Programs list
+    score: 8
+    ttps:
+    - T1059.003
+    - T1562.004
+    triggers:
+    - commandline:
+      - netsh\s+firewall\s+add\s+allowedprogram\s

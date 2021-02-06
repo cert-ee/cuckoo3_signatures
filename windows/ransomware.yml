@@ -1,0 +1,16 @@
+name: ransomware_actions
+signatures:
+  deletes_shadow_copies:
+    short_description: Deletes shadow copies
+    description: Ransomware often targets backup files to inhibit system recovery.
+    score: 10
+    tags:
+    - ransomware
+    ttps:
+    - T1070.004
+    - T1490
+    triggers:
+    - commandline:
+      - ^vssadmin(\.exe)? delete\s+shadows
+    - commandline:
+      - ^wmic(\.exe)? .*shadowcopy\s+delete.*(\/nointeractive)?

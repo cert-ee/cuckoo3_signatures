@@ -6,7 +6,18 @@ signatures:
     score: 10
     family: conti
     triggers:
-    - mutant create:
+    - indicator:
+      - conti_ransomnote
+      - conti_mutex
+
+indicators:
+  conti_ransomnote:
+    triggers:
+    - file:
+      - \\CONTI_README\.txt$
+
+  conti_mutex:
+    triggers:
+    - mutant:
       - ^_CONTI_$
-      file create:
-        - \\CONTI_README\.txt$
+

@@ -1,0 +1,44 @@
+name: family_vidar
+signatures:
+  vidar:
+    short_description: Detected Vidar stealer
+    description: Vidar is an infostealer based on Arkei stealer.
+    score: 10
+    tags:
+    - stealer
+    family: vidar
+    triggers:
+    - indicator:
+      - vidar_files
+      - vidar_log_files      
+      - vidar_exfil_zip
+
+indicators:
+  vidar_dlls:
+    triggers:
+    - file write:
+      - ^C:\\ProgramData\\(freebl3|mozglue|msvcp140|nss3|softokn3|vcruntime140)\.dll$
+
+  vidar_file_tree:
+    triggers:
+    - file write:
+      - ^C:\\ProgramData\\[A-Z0-9]{20,30}\\files\\(Autofill|CC|Cookies|Downloads|Files|History|Soft|Telegram|Wallets)$
+
+  vidar_log_files:
+    triggers:
+    - file write:
+      - ^C:\\ProgramData\\[A-Z0-9]{20,30}\\files\\(screenshot\.jpg|(passwords|information)\.txt)$
+
+  vidar_exfil_zip:
+    triggers:
+    - file write:
+      - ^C:\\ProgramData\\[A-Z0-9]{20,30}\\[A-Z]{2}_[a-f0-9]{8}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{12,22}\.zip$
+    - file write:
+      - ^C:\\ProgramData\\[A-Z0-9]{20,30}\\[a-f0-9]{8}\-([a-f0-9]{4}\-){3}[a-f0-9]+\.zip$
+
+  vidar_files:
+    triggers:
+    - indicator:
+      - vidar_dlls
+    - indicator:
+      - vidar_file_tree

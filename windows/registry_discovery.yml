@@ -1,0 +1,14 @@
+name: registry_discovery
+signatures:
+  registry_checks_uninstall_keys:
+    short_description: Checks installed software on the system
+    description: Looks up Uninstall key entries in the registry to enumerate software on the system.
+    score: 6
+    ttps:
+    - T1012
+    - T1518
+    triggers:
+    - registry:
+      - ^(HKLM|HKCU)\\Software\\Microsoft\\Windows\\CurrentVersion\\Uninstall\\.+\\DisplayName$
+    - registry:
+      - ^(HKLM|HKCU)\\Software\\Microsoft\\Windows\\CurrentVersion\\Uninstall$

@@ -1,0 +1,10 @@
+name: cmd_timeout
+signatures:
+  cmd_timeout_delay:
+    short_description: Delays execution with timeout.exe
+    score: 6
+    ttps:
+    - T1497.003
+    triggers:
+    - commandline:
+      - ^timeout(\.exe)? \d+

@@ -1,0 +1,14 @@
+name: family_plugx
+signatures:
+  plugx:
+    short_description: Detected PlugX trojan
+    description: PlugX is a RAT (Remote Access Trojan) that has been around since 2008.
+    score: 10
+    tags:
+    - trojan
+    family: plugx
+    triggers:
+    - file write:
+      - ^C:\\Users\\user\\AppData\\Local\\Temp\\[\w-]{1,15}.exe$
+      - ^C:\\Users\\user\\AppData\\Local\\Temp\\[\w-]{1,15}.dll$
+      - ^C:\\Users\\user\\AppData\\Local\\Temp\\[\w-]{1,15}.dat$

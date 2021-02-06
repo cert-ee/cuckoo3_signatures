@@ -1,0 +1,35 @@
+name: family_masslogger
+signatures:
+  masslogger:
+    short_description: Detected Masslogger
+    description: Masslogger is a .NET stealer targeting passwords from browsers, email and cryptocurrency clients.
+    score: 10
+    tags:
+    - stealer
+    - spyware
+    family: masslogger
+    triggers:
+    - indicator:
+      - masslogger_drop_path
+      - masslogger_file_path
+      - masslogger_exfil_zip
+
+indicators:
+  masslogger_drop_path:
+    triggers:
+    - file write:
+      - ^C:\\Users\\user\\AppData\\Local\\Temp\\[a-f0-9]{10,20}$
+
+  masslogger_file_path:
+    triggers:
+    - file write:
+      - ^C:\\Users\\user\\AppData\\Local\\Temp\\[a-f0-9]{10,20}\\Log\.txt$
+    - file write:
+      - ^C:\\Users\\user\\AppData\\Local\\Temp\\[a-f0-9]{10,20}\\Screenshot\.jpeg$
+    - file write:
+      - ^C:\\Users\\user\\AppData\\Local\\Temp\\[a-f0-9]{10,20}\\SearchAndUpload\.zip$
+
+  masslogger_exfil_zip:
+    triggers:
+    - file:
+      - ^C:\\Users\\user\\AppData\\Local\\Temp\\[a-f0-9]{10,20}\\.+_[A-F0-9]{10}_\d{1,2}-\d{1,2}-\d{4} \d{1,2}\.\d{1,2}\.\d{1,2}\.zip$

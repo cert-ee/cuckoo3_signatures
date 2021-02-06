@@ -1,0 +1,10 @@
+name: cmd_taskkill
+signatures:
+  cmd_taskkill_process:
+    short_description: Kills process with taskkill.exe
+    score: 7
+    ttps:
+    - T1562.001
+    triggers:
+    - commandline:
+      - ^taskkill(\.exe)?.*(\/im.*\/f|\/f.*\/im)

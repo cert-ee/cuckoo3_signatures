@@ -56,3 +56,20 @@ signatures:
     - file write:
       - ^C:\\Users\\user\\AppData\\Roaming\\Microsoft\\(Word|Windows\\Start Menu\\Programs)\\Startup\\
 
+  file_drops_system32:
+    short_description: Drops file in System32 directory
+    score: 5
+    triggers:
+    - file write:
+      - ^C:\\Windows\\System32\\
+
+  file_drops_windows:
+    short_description: Drops file in Windows directory
+    score: 4
+    triggers:
+    - file write:
+      - ^C:\\Windows\\
+      safelist:
+        file write:
+        - ^C:\\Windows\\Temp\\
+

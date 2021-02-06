@@ -9,24 +9,19 @@ signatures:
     - registry write:
       - ^HKCU\\software\remcos-
     - file write:
-      - ^c:\\users\\user\\appdata\\roaming\\remcos\\(logs\.dat|remcos\.exe)$
+      - ^c:\\users\\user\\appdata\\roaming\\remcos
     - indicator:
       - remcos_mutex_inj
-      indicator:
       - remcos_log_path
-      file write:
-      - ^c:\\users\\user\\AppData\\Local\\Temp\\(install|uninstall)\.(bat|vbs)$
+      - remcos_install_script
     - indicator:
       - remcos_mutex_inj
-      indicator:
       - remcos_log_path
     - indicator:
       - remcos_reg_pers
-      indicator:
       - remcos_log_path
     - indicator:
       - remcos_mutex_inj
-      indicator:
       - remcos_reg_pers
       
 indicators:
@@ -39,6 +34,11 @@ indicators:
     triggers:
     - file write:
       - ^c:\\users\\user\\appdata\\roaming\\remcos\\logs\.dat$
+
+  remcos_install_script:
+    triggers:
+    - file write:
+      - ^c:\\users\\user\\AppData\\Local\\Temp\\(install|uninstall)\.(bat|vbs)$
 
   remcos_reg_pers:
     triggers:

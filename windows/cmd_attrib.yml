@@ -1,0 +1,12 @@
+name: cmd_attrib
+signatures:
+  cmd_attrib_hidden:
+    short_description: Sets local file to Hidden
+    description: Uses attrib.exe to modify file attributes to hide it in Explorer.
+    score: 8
+    ttps:
+    - T1564.001
+    - T1059.003
+    triggers:
+    - commandline:
+      - ^attrib(\.exe)?.*\W\+h(\W|$)

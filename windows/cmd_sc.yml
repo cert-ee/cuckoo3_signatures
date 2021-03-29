@@ -1,0 +1,88 @@
+name: cmd_sc
+signatures:
+  cmd_sc_create:
+    short_description: Creates new service
+    description: Uses sc.exe to create a new service via commandline.
+    score: 8
+    ttps:
+    - T1569.002
+    - T1059.003
+    triggers:
+    - commandline:
+      - ^sc\.exe .*create.*binpath=
+
+  cmd_sc_config:
+    short_description: Modifies service setting(s)
+    description: Uses sc.exe to modify the configuration of an existing service.
+    score: 7
+    ttps:
+    - T1059.003
+    triggers:
+    - commandline:
+      - ^sc(\.exe)?\W+config\W.*
+
+  cmd_sc_config_disable:
+    short_description: Modifies service to prevent launch at startup
+    description: Uses sc.exe to modify service settings to prevent it automatically launching when the system boots.
+    score: 8
+    ttps:
+    - T1059.003
+    - T1489
+    triggers:
+    - commandline:
+      - ^sc(\.exe)?\W+config\W.*(start=[ ]?disabled)
+
+  cmd_sc_autostart:
+    short_description: Configures service to launch at startup
+    description: Uses sc.exe to configure service autostart settings.
+    score: 8
+    ttps:
+    - T1059.003
+    - T1569.002
+    triggers:
+    - commandline:
+      - ^sc(\.exe)?.*\Wstart=[ ]?auto
+
+  cmd_sc_delete:
+    short_description: Deletes service
+    description: Uses sc.exe to remove an existing service.
+    score: 8
+    ttps:
+    - T1059.003
+    - T1489
+    triggers:
+    - commandline:
+      - ^sc(\.exe)?\W+delete\W+
+
+  cmd_sc_failure:
+    short_description: Modifies service failure settings
+    description: Uses sc.exe to modify the actions taken when a service fails/crashes. Often used to stealthily load malicious payloads.
+    score: 8
+    ttps:
+    - T1059.003
+    - T1569.002
+    triggers:
+    - commandline:
+      - ^sc(\.exe)?\W+failure\W.*reset=.*actions=
+
+  cmd_sc_start:
+    short_description: Launches service directly
+    description: Uses sc.exe to immediately start a service.
+    score: 8
+    ttps:
+    - T1059.003
+    - T1569.002
+    triggers:
+    - commandline:
+      - ^sc(\.exe)?\W+start\W+
+
+  cmd_sc_stop:
+    short_description: Stops running service
+    description: Uses sc.exe to immediately stop a service.
+    score: 8
+    ttps:
+    - T1059.003
+    - T1489
+    triggers:
+    - commandline:
+      - ^sc(\.exe)?\W+stop\W+

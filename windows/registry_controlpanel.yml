@@ -1,0 +1,23 @@
+name: registry_controlpanel
+signatures:
+  registry_changes_wallpaper:
+    short_description: Sets desktop wallpaper
+    description: Modifies registry value to change active wallpaper.
+    score: 6
+    ttps:
+    - T1491.001
+    - T1112
+    triggers:
+    - registry write:
+      - ^(HKLM|HKCU)\\Control Panel\\Desktop\\Wallpaper$
+
+  registry_checks_nation_code:
+    short_description: Checks computer location settings
+    description: Looks up country code configured in the registry. Likely geofence.
+    score: 7
+    ttps:
+    - T1012
+    - T1082
+    triggers:
+    - registry read:
+      - ^(HKLM|HKCU\\Control Panel\\International\\Geo\\Nation$

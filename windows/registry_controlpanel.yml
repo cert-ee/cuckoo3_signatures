@@ -11,6 +11,8 @@ signatures:
     - registry write:
       - ^(HKLM|HKCU)\\Control Panel\\Desktop\\Wallpaper$
 
+  # Can be triggered by standard processes like Office
+  # Could use non-orig or process safelisting
   registry_checks_nation_code:
     short_description: Checks computer location settings
     description: Looks up country code configured in the registry. Likely geofence.

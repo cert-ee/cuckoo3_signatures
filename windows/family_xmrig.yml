@@ -5,6 +5,8 @@ signatures:
     description: XMRig is a high performance, open source, cross platform CPU/GPU miner.
     score: 10
     family: xmrig
+    tags:
+    - miner
     triggers:
     - indicator:
       - xmrig_mutex

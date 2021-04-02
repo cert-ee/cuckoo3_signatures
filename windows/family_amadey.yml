@@ -4,7 +4,9 @@ signatures:
     short_description: Detected Amadey Trojan
     description: Amadey bot is a simple trojan bot primarily used for collecting reconnaissance.
     score: 10
-    tags: [trojan]
+    tags:
+    - trojan
+    - botnet
     family: amadey
     triggers:
     - file write:

@@ -5,6 +5,8 @@ signatures:
     description: Remcos is a closed-source remote control and surveillance software.
     score: 10
     family: remcos
+    tags:
+    - trojan
     triggers:
     - registry write:
       - ^HKCU\\software\remcos-

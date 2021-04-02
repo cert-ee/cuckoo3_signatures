@@ -5,6 +5,8 @@ signatures:
     description: Ransomware widely considered as a successor to Ryuk.
     score: 10
     family: conti
+    tags:
+    - ransomware
     triggers:
     - indicator:
       - conti_ransomnote

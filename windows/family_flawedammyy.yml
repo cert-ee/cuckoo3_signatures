@@ -5,6 +5,8 @@ signatures:
     description: Remote-access trojan based on leaked code for the Ammyy remote admin software.
     score: 10
     family: flawedammyy
+    tags:
+    - trojan
     triggers:
     - registry write:
       - ^HKLM\\software\\microsoft\\windows\\currentversion\\run\\sintech client$

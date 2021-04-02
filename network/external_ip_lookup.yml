@@ -1,0 +1,75 @@
+name: external_ip_lookup
+signatures:
+  checks_ip_web:
+    short_description: Looks up external IP address using web service
+    description: Uses a legitimate IP lookup service to find the infected system's external IP.
+    score: 6
+    triggers:
+    - indicator:
+      - ip_check_url
+
+indicators:
+  ip_check_url:
+    triggers:
+    - dns_q: eth0.me
+    - dns_q: checkip.dyndns.com
+    - dns_q: checkip.dyndns.org
+    - dns_q: whatismyip.org
+    - dns_q: whatsmyipaddress.com
+    - dns_q: getmyip.org
+    - dns_q: getmyip.co.uk
+    - dns_q: icanhazip.com
+    - dns_q: whatismyipaddress.com
+    - dns_q: myipaddress.com
+    - dns_q: ip-addr.es
+    - dns_q: api.ipify.org
+    - dns_q: ipinfo.info
+    - dns_q: myexternalip.com
+    - dns_q: ip-address.domaintools.com
+    - dns_q: ipchicken.com
+    - dns_q: www.whatismyip.ca
+    - dns_q: showmyip.com
+    - dns_q: www.formyip.com
+    - dns_q: ip2location.com
+    - dns_q: meineipadresse.de
+    - dns_q: ip-lookup.net
+    - dns_q: checkip.org
+    - dns_q: geoiptool.com
+    - dns_q: cmyip.com
+    - dns_q: knowmyip.com
+    - dns_q: whatismyip.everdot.org
+    - dns_q: whatismyip.akamai.com
+    - dns_q: whatismyip.com
+    - dns_q: bot.whatismyipaddress.com
+    - dns_q: showmyipaddress.com
+    - dns_q: www.showmyipaddress.com
+    - dns_q: www.getmyip.org
+    - dns_q: www.checkip.org
+    - dns_q: myip.nl
+    - dns_q: www.myip.nl
+    - dns_q: myip.dnsomatic.com
+    - dns_q: www.geoip.co.uk
+    - dns_q: ipecho.net
+    - dns_q: wtfismyip.com
+    - dns_q: ipinfo.io
+    - dns_q: ip.anysrc.net
+    - dns_q: checkip.amazonaws.com
+    - dns_q: ipaddress.pro
+    - dns_q: ip-api.com
+    - dns_q: ipaddress.com
+    - dns_q: ident.me
+    - dns_q: www.iplocation.net
+    - http_url: ^https://www\.expressvpn\.com\/what\-is\-my\-ip$
+    - http_url: ^https://nordvpn\.com\/what\-is\-my\-ip\/$
+    - dns_q: whoer.net
+    - dns_q: api.ipify.org
+    - dns_q: api.db-ip.com
+    - dns_q: ipapi.co
+    - dns_q: ifconfig.me
+    - dns_q: extreme-ip-lookup.com
+    - dns_q: api.myip.com
+    - dns_q: myip.com
+    - dns_q: freegeoip.app
+    - http_url: ^https://api\.opennicproject\.org/geoip
+    - http_url: ^http://www\.sfml\-dev\.org/ip\-provider\.php$
+    - dns_q: api.2ip.ua

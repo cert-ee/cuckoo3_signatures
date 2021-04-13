@@ -22,4 +22,4 @@ signatures:
     - T1082
     triggers:
     - registry read:
-      - ^(HKLM|HKCU\\Control Panel\\International\\Geo\\Nation$
+      - ^(HKLM|HKCU)\\Control Panel\\International\\Geo\\Nation$

@@ -1,0 +1,43 @@
+name: family_raccoon
+signatures:
+  raccoon:
+    short_description: Detected Raccoon infostealer
+    description: Common infostealer which targets sensitive information stored locally.
+    score: 10
+    family: raccoon
+    tags:
+    - trojan
+    - stealer
+    triggers:
+    - indicator:
+      - raccoon_mutex
+      - raccoon_c2
+    - indicator:
+      - raccoon_mutex
+      - raccoon_logs
+
+indicators:
+  raccoon_mutex:
+    triggers:
+    - mutant created:
+      - ^rc\/[a-z0-9]{1,}$
+      mutant open:
+      - ^rc\/[a-z0-9]{1,}$
+    - mutant created:
+      - ^[a-z0-9]{8,11}Admin
+      mutant open:
+      - ^[a-z0-9]{8,11}Admin
+  raccoon_logs:
+    triggers:
+    - file:
+      - ^C:\\Users\\user\\AppData\\(Local\\Temp|LocalLow)\\CC\.txt$
+    - file:
+      - ^C:\\Users\\user\\AppData\\(Local\\Temp|LocalLow)\\machineinfo\.txt$
+    - file:
+      - ^C:\\Users\\user\\AppData\\(Local\\Temp|LocalLow)\\ie_autofill\.txt$
+  raccoon_c2:
+    triggers:
+    - dns_q:
+      - drive.google.com
+    - http_url:
+      - ^.*/gate/log\.php$

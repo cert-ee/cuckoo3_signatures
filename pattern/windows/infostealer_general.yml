@@ -11,6 +11,10 @@ signatures:
     triggers:
     - indicator:
       - ftp_client_files
+      safelist:
+        images:
+        - c:\program files\internet explorer\iexplore.exe
+        - c:\program files (x86)\internet explorer\iexplore.exe
     - indicator:
       - ftp_client_registry
     

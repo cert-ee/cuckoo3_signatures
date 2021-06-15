@@ -23,3 +23,7 @@ signatures:
     triggers:
     - registry read:
       - ^(HKLM|HKCU)\\Control Panel\\International\\Geo\\Nation$
+      safelist:
+        images:
+        - c:\program files\internet explorer\iexplore.exe
+        - c:\program files (x86)\internet explorer\iexplore.exe

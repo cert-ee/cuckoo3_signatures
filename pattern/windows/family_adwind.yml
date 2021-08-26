@@ -4,6 +4,7 @@ signatures:
     short_description: Detected AdWind
     description: A Java-based RAT family operated as malware-as-a-service.
     score: 10
+    family: adwind
     tags:
     - trojan
     triggers:
